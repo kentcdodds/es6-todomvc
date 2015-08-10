@@ -1,5 +1,6 @@
 /*global app, $on */
-require('todomvc-common');
+require('todomvc-common/base.css');
+require('todomvc-app-css/index.css');
 require('./view');
 require('./helpers');
 require('./controller');
@@ -22,11 +23,15 @@ require('./template');
 		this.controller = new app.Controller(this.model, this.view);
 	}
 
-	var todo = new Todo('todos-vanillajs');
+	var todo;
 
 	function setView() {
 		todo.controller.setView(document.location.hash);
 	}
-	$on(window, 'load', setView);
+
+	$on(window, 'load', function() {
+		todo = new Todo('todos-vanillajs');
+		setView();
+	});
 	$on(window, 'hashchange', setView);
 })();
