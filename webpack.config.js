@@ -6,7 +6,12 @@ module.exports = {
     filename: 'bundle.js',
     path: here()
   },
-  context: here('js')
+  context: here('js'),
+  module: {
+    loaders: [
+      {test: /\.css$/, loaders: ['style', 'css']}
+    ]
+  }
 };
 
 function here(d) {
