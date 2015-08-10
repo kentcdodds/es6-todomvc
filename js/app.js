@@ -1,4 +1,11 @@
 /*global app, $on */
+require('todomvc-common');
+require('./view');
+require('./helpers');
+require('./controller');
+require('./model');
+require('./store');
+require('./template');
 (function () {
 	'use strict';
 

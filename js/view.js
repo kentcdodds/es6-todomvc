@@ -1,5 +1,5 @@
 /*global qs, qsa, $on, $parent, $delegate */
-
+require('./helpers');
 (function (window) {
     'use strict';
 
