@@ -1,12 +1,12 @@
-'use strict';
-require('todomvc-common/base.css');
-require('todomvc-app-css/index.css');
-var View = require('./view');
-var helpers = require('./helpers');
-var Controller = require('./controller');
-var Model = require('./model');
-var Store = require('./store');
-var Template = require('./template');
+import 'todomvc-common/base.css';
+import 'todomvc-app-css/index.css';
+
+import View from './view';
+import helpers from './helpers';
+import Controller from './controller';
+import Model from './model';
+import Store from './store';
+import Template from './template';
 
 var $on = helpers.$on;
 /**

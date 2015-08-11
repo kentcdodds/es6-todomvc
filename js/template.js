@@ -1,7 +1,5 @@
 /*jshint laxbreak:true */
-'use strict';
-
-module.exports = Template;
+export default Template;
 
 var htmlEscapes = {
 	'&': '&amp;',

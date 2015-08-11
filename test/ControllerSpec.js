@@ -1,9 +1,7 @@
 /*global app, jasmine, describe, it, beforeEach, expect */
-var Controller = require('../js/controller');
+import Controller from '../js/controller';
 
 describe('controller', function () {
-	'use strict';
-
 	var subject, model, view;
 
 	var setUpModel = function (todos) {

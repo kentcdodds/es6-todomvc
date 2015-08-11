@@ -1,12 +1,5 @@
 /*global NodeList */
-'use strict';
-module.exports = {
-	qs: qs,
-	qsa: qsa,
-	$on: $on,
-	$delegate: $delegate,
-	$parent: $parent
-};
+export default {qs, qsa, $on, $delegate, $parent};
 
 // Get element(s) by CSS selector:
 function qs(selector, scope) {
