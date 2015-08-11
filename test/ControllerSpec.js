@@ -212,6 +212,16 @@ describe('controller', function () {
       expect(model.create).toHaveBeenCalledWith('a new todo', jasmine.any(Function));
     });
 
+    it(`should not add a new todo that has no content`, () => {
+      setUpModel([]);
+
+      subject.setView('');
+
+      view.trigger('newTodo', '   ');
+
+      expect(model.create).not.toHaveBeenCalled();
+    });
+
     it('should add a new todo to the view', function () {
       setUpModel([]);
 
