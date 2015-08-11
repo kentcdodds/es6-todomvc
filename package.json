@@ -3,8 +3,8 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server",
-    "test": "karma start",
-    "test:single": "karma start --single-run"
+    "test": "NODE_ENV=test karma start",
+    "test:single": "NODE_ENV=test karma start --single-run"
   },
   "dependencies": {
     "todomvc-common": "1.0.2",
@@ -16,6 +16,7 @@
     "karma": "0.13.9",
     "karma-firefox-launcher": "0.1.6",
     "karma-jasmine": "0.3.6",
+    "karma-webpack": "1.7.0",
     "style-loader": "0.12.3",
     "webpack": "1.11.0",
     "webpack-dev-server": "1.10.1"

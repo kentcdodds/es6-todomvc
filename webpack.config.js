@@ -1,6 +1,6 @@
 var path = require('path');
 
-module.exports = {
+var config = {
   entry: './app.js',
   output: {
     filename: 'bundle.js',
@@ -13,6 +13,13 @@ module.exports = {
     ]
   }
 };
+
+if (process.env.NODE_ENV === 'test') {
+  config.entry = './ControllerSpec.js';
+  config.context = here('test');
+}
+
+module.exports = config;
 
 function here(d) {
   return d ? path.join(__dirname, d) : __dirname;
