@@ -7,6 +7,7 @@ var config = {
 		path: here()
 	},
 	context: here('js'),
+	devtool: 'eval',
 	module: {
 		loaders: [
 			{test: /\.js$/, loader: 'babel', exclude: /node_modules/},
