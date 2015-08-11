@@ -1,3 +1,9 @@
+var path = require('path');
+var webpackConfig = require('./webpack.config');
+var entry = path.resolve(webpackConfig.context, webpackConfig.entry);
+var preprocessors = {};
+preprocessors[entry] = ['webpack'];
+
 // Karma configuration
 // Generated on Mon Aug 10 2015 05:47:13 GMT-0600 (MDT)
 
@@ -14,12 +20,7 @@ module.exports = function (config) {
 
 
 		// list of files / patterns to load in the browser
-		files: [
-			'test/**/*Spec.js',
-			'js/helpers.js',
-			'js/view.js',
-			'js/controller.js'
-		],
+		files: [entry],
 
 
 		// list of files to exclude
@@ -28,8 +29,9 @@ module.exports = function (config) {
 
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-		preprocessors: {},
-
+		preprocessors: preprocessors,
+		webpack: webpackConfig,
+		webpackMiddleware: {noInfo: true},
 
 		// test results reporter to use
 		// possible values: 'dots', 'progress'
@@ -61,6 +63,12 @@ module.exports = function (config) {
 
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits
-		singleRun: false
+		singleRun: false,
+
+		plugins: [
+			require('karma-webpack'),
+			'karma-jasmine',
+			'karma-chrome-launcher'
+		]
 	});
 };
