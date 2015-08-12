@@ -1,12 +1,6 @@
-'use strict';
-var helpers = require('./helpers');
-var qs = helpers.qs;
-var qsa = helpers.qsa;
-var $on = helpers.$on;
-var $parent = helpers.$parent;
-var $delegate = helpers.$delegate;
+import {qs, qsa, $on, $parent, $delegate} from './helpers';
 
-module.exports = View;
+export default View;
 /**
  * View that abstracts away the browser's DOM completely.
  * It has two simple entry points:

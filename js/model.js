@@ -1,5 +1,5 @@
-'use strict';
-module.exports = Model;
+export default Model;
+
 /**
  * Creates a new Model instance and hooks up the storage.
  *
