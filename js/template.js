@@ -1,6 +1,8 @@
 /*jshint laxbreak:true */
 'use strict';
 
+module.exports = Template;
+
 var htmlEscapes = {
   '&': '&amp;',
   '<': '&lt;',
@@ -106,7 +108,3 @@ Template.prototype.clearCompletedButton = function (completedTodos) {
     return '';
   }
 };
-
-// Export to window
-window.app = window.app || {};
-window.app.Template = Template;
