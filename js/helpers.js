@@ -1,5 +1,5 @@
 /*global NodeList */
-export default {qs, qsa, $on, $delegate, $parent};
+export {qs, qsa, $on, $delegate, $parent};
 
 // Get element(s) by CSS selector:
 function qs(selector, scope) {

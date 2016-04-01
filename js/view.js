@@ -9,7 +9,7 @@ import {qs, qsa, $on, $parent, $delegate} from './helpers';
  *   - render(command, parameterObject)
  *     Renders the given command with the options
  */
-export default class View {
+class View {
 	constructor(template) {
 		this.template = template;
 
@@ -204,3 +204,5 @@ function _itemId(element) {
 	var li = $parent(element, 'li');
 	return parseInt(li.dataset.id, 10);
 }
+
+export default View

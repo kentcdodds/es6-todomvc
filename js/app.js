@@ -2,13 +2,12 @@ import 'todomvc-common/base.css';
 import 'todomvc-app-css/index.css';
 
 import View from './view';
-import helpers from './helpers';
+import {$on} from './helpers';
 import Controller from './controller';
 import Model from './model';
 import Store from './store';
 import Template from './template';
 
-var $on = helpers.$on;
 /**
  * Sets up a brand new Todo list.
  *
