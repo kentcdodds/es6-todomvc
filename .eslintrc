@@ -1,0 +1,14 @@
+{
+  "extends": ["kentcdodds/es-next"],
+  "rules": {
+    // these are only here because I didn't
+    // want to update the entire codebase ¯\_(ツ)_/¯
+    "func-names": 0,
+    "no-var": 0,
+    "func-style": 0,
+    "comma-dangle": 0,
+    "valid-jsdoc": 0,
+    "vars-on-top": 0,
+    "complexity": [2, 6],
+  }
+}
