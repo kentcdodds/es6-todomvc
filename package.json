@@ -12,6 +12,7 @@
     "babel-plugin-__coverage__": "0.111111.1",
     "babel-preset-es2015-webpack": "6.4.1",
     "babel-preset-stage-2": "6.5.0",
+    "cpy-cli": "1.0.0",
     "cross-env": "1.0.7",
     "css-loader": "0.23.1",
     "eslint": "2.9.0",
@@ -24,6 +25,7 @@
     "karma-firefox-launcher": "0.1.7",
     "karma-jasmine": "0.3.8",
     "karma-webpack": "1.7.0",
+    "rimraf": "2.5.2",
     "style-loader": "0.13.1",
     "webpack": "2.1.0-beta.6",
     "webpack-dev-server": "2.0.0-beta"
@@ -31,7 +33,12 @@
   "scripts": {
     "test": "cross-env NODE_ENV=test karma start",
     "watch:test": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run",
-    "start": "webpack-dev-server",
+    "clean-dist": "rimraf dist",
+    "copy-files": "cpy src/index.html src/favicon.ico dist",
+    "clean-and-copy": "npm run clean-dist && npm run copy-files",
+    "prestart": "npm run clean-and-copy",
+    "start": "webpack-dev-server --content-base dist",
+    "prebuild": "npm run clean-and-copy",
     "build": "webpack",
     "lint": "eslint ."
   }

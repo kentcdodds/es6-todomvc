@@ -1,10 +1,12 @@
+const {resolve} = require('path')
 module.exports = {
   entry: './js/app.js',
   output: {
     filename: 'bundle.js',
+    path: resolve(__dirname, 'dist'),
     pathinfo: true,
   },
-  context: __dirname,
+  context: resolve(__dirname, 'src'),
   devtool: 'eval',
   module: {
     loaders: [
