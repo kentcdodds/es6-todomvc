@@ -48,7 +48,7 @@
     "copy-files": "cpy src/index.html src/favicon.ico dist",
     "clean-and-copy": "npm run clean-dist && npm run copy-files",
     "prestart": "npm run clean-and-copy",
-    "start": "webpack-dev-server --content-base dist",
+    "start": "webpack-dev-server --content-base dist --hot --inline",
     "prebuild": "npm run clean-and-copy",
     "build": "webpack",
     "lint": "eslint ."
