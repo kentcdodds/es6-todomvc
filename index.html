@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>VanillaJS • TodoMVC</title>
-    <script src="bundle.js"></script>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <style>.hide {display: none;}</style>
   </head>
   <body>
-    <section class="todoapp">
+    <section class="todoapp hide">
       <header class="header">
         <h1>todos</h1>
         <input class="new-todo" placeholder="What needs to be done?" autofocus>
@@ -32,12 +33,14 @@
         <button class="clear-completed">Clear completed</button>
       </footer>
     </section>
-    <footer class="info">
+    <footer class="info hide">
       <p>Double-click to edit a todo</p>
       <p>Created by <a href="http://twitter.com/oscargodson">Oscar Godson</a></p>
       <p>Refactored by <a href="https://github.com/cburgmer">Christoph Burgmer</a></p>
       <p>Ported to ES6 by <a href="https://twitter.com/kentcdodds">Kent C. Dodds</a></p>
       <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
     </footer>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?ua=Mozilla/5.0%20(Windows;%20U;%20MSIE%209.0;%20WIndows%20NT%209.0;%20en-US))&features=default,Promise&flags=gated"></script>
+    <script src="bundle.js"></script>
   </body>
 </html>

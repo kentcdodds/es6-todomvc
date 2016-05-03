@@ -1,5 +1,4 @@
-/*global NodeList */
-export {qs, qsa, $on, $delegate, $parent}
+export {qs, qsa, removeClass, $on, $delegate, $parent}
 
 // Get element(s) by CSS selector:
 function qs(selector, scope) {
@@ -7,6 +6,19 @@ function qs(selector, scope) {
 }
 function qsa(selector, scope) {
   return (scope || document).querySelectorAll(selector)
+}
+function removeClass(el, className) {
+  if (el.length) {
+    for (var i = 0; i < el.length; i++) {
+      removeClass(el[i], className)
+    }
+    return
+  }
+  if (el.classList) {
+    el.classList.remove(className)
+  } else {
+    el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ')
+  }
 }
 
 // addEventListener wrapper:
