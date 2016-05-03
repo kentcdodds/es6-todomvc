@@ -6,8 +6,8 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <style>.hide {display: none;}</style>
   </head>
-  <body>
-    <section class="todoapp hide">
+  <body class="hide">
+    <section class="todoapp">
       <header class="header">
         <h1>todos</h1>
         <input class="new-todo" placeholder="What needs to be done?" autofocus>
@@ -33,7 +33,7 @@
         <button class="clear-completed">Clear completed</button>
       </footer>
     </section>
-    <footer class="info hide">
+    <footer class="info">
       <p>Double-click to edit a todo</p>
       <p>Created by <a href="http://twitter.com/oscargodson">Oscar Godson</a></p>
       <p>Refactored by <a href="https://github.com/cburgmer">Christoph Burgmer</a></p>
@@ -41,6 +41,6 @@
       <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
     </footer>
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Promise"></script>
-    <script src="bundle.js"></script>
+    <script src="/dist/bundle.js"></script>
   </body>
 </html>
