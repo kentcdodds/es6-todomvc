@@ -1,4 +1,4 @@
-const webpackConfig = require('./webpack.config.babel')
+const webpackConfig = require('./webpack.config')
 require('babel-register')
 
 module.exports = function setKarmaConfig(config) {

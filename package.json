@@ -18,6 +18,7 @@
     "eslint": "2.9.0",
     "eslint-config-kentcdodds": "6.2.1",
     "eslint-loader": "1.3.0",
+    "ghooks": "1.2.1",
     "jasmine-core": "2.4.1",
     "karma": "0.13.22",
     "karma-chrome-launcher": "1.0.1",
@@ -25,14 +26,24 @@
     "karma-firefox-launcher": "0.1.7",
     "karma-jasmine": "0.3.8",
     "karma-webpack": "1.7.0",
+    "npm-run-all": "1.8.0",
+    "opt-cli": "1.4.2",
     "rimraf": "2.5.2",
     "style-loader": "0.13.1",
     "webpack": "2.1.0-beta.6",
-    "webpack-dev-server": "2.0.0-beta"
+    "webpack-dev-server": "2.0.0-beta",
+    "webpack-validator": "1.4.0"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "opt --in pre-commit --exec \"npm run validate\""
+    }
   },
   "scripts": {
     "test": "cross-env NODE_ENV=test karma start",
     "watch:test": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run",
+    "validate": "npm-run-all --parallel validate-webpack lint test",
+    "validate-webpack": "webpack-validator webpack.config.js",
     "clean-dist": "rimraf dist",
     "copy-files": "cpy src/index.html src/favicon.ico dist",
     "clean-and-copy": "npm run clean-dist && npm run copy-files",
