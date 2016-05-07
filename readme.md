@@ -1,14 +1,14 @@
 # Vanilla JavaScript TodoMVC Example
 
-**This particular example has been migrated to utilize ES6**
+## Purpose
 
 This was originally part of [an ES6 training](bit.ly/es6-intro-slides) by [Kent C. Dodds](https://twitter.com/kentcdodds)
 
 Now I'm using it to teach people about [Webpack](http://webpack.github.io/).
 
-> JavaScript® (often shortened to JS) is a lightweight, interpreted, object-oriented language with first-class functions, most known as the scripting language for Web pages, but used in many non-browser environments as well such as node.js or Apache CouchDB.
+## Thanks
 
-> _[JavaScript - developer.mozilla.org](http://developer.mozilla.org/en-US/docs/JavaScript)
+This codebase was originally taken from the TodoMVC project starting [here](https://github.com/tastejs/todomvc/tree/563d1e1b8cee5f6ec962ec43663cb66a72b69d76/examples/vanillajs). Big thanks to them!
 
 ## Project Setup
 
