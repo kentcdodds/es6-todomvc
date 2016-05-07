@@ -1,16 +1,14 @@
+/* eslint import/namespace:0 */
 import {$on} from './helpers'
+import * as facts from './facts'
 
 const factsList = document.getElementById('facts-list')
 const factText = document.getElementById('fact-text')
 
 $on(factsList, 'click', ({target: {dataset: {fact}}}) => {
   if (!fact) {
-    System.import('./facts/default-fact').then(setFactText)
+    factText.innerText = facts.defaultFact
     return
   }
-  System.import('./facts/' + fact).then(setFactText)
-
-  function setFactText({fact: animalFact}) {
-    factText.innerText = animalFact
-  }
+  factText.innerText = facts[fact]
 })
