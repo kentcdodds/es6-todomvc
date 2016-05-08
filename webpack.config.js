@@ -1,4 +1,5 @@
 const {resolve} = require('path')
+const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
   entry: './js/app.js',
   output: {
@@ -7,7 +8,7 @@ module.exports = {
     pathinfo: true,
   },
   context: resolve(__dirname, 'src'),
-  devtool: 'eval',
+  devtool: isProd ? 'source-map' : 'eval',
   module: {
     loaders: [
       {test: /\.js$/, loader: 'babel!eslint', exclude: /node_modules/},

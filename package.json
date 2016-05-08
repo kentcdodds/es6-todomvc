@@ -9,7 +9,7 @@
     "babel-core": "6.8.0",
     "babel-eslint": "6.0.4",
     "babel-loader": "6.2.4",
-    "babel-plugin-__coverage__": "0.111111.1",
+    "babel-plugin-__coverage__": "0.111111.11",
     "babel-preset-es2015-webpack": "6.4.1",
     "babel-preset-stage-2": "6.5.0",
     "cpy-cli": "1.0.0",
@@ -22,17 +22,17 @@
     "jasmine-core": "2.4.1",
     "karma": "0.13.22",
     "karma-chrome-launcher": "1.0.1",
-    "karma-coverage": "0.5.5",
-    "karma-firefox-launcher": "0.1.7",
-    "karma-jasmine": "0.3.8",
+    "karma-coverage": "1.0.0",
+    "karma-firefox-launcher": "1.0.0",
+    "karma-jasmine": "1.0.2",
     "karma-webpack": "1.7.0",
     "npm-run-all": "1.8.0",
     "opt-cli": "1.4.2",
     "rimraf": "2.5.2",
     "style-loader": "0.13.1",
-    "webpack": "2.1.0-beta.6",
+    "webpack": "2.1.0-beta.7",
     "webpack-dev-server": "2.0.0-beta",
-    "webpack-validator": "1.4.0"
+    "webpack-validator": "1.5.0"
   },
   "config": {
     "ghooks": {
@@ -42,15 +42,17 @@
   "scripts": {
     "test": "cross-env NODE_ENV=test karma start",
     "watch:test": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run",
-    "validate": "npm-run-all --parallel validate-webpack lint test",
-    "validate-webpack": "webpack-validator webpack.config.js",
+    "validate": "npm-run-all --parallel validate-webpack:* lint test",
+    "validate-webpack:dev": "cross-env NODE_ENV=development webpack-validator webpack.config.js",
+    "validate-webpack:prod": "cross-env NODE_ENV=production webpack-validator webpack.config.js",
     "clean-dist": "rimraf dist",
     "copy-files": "cpy src/index.html src/favicon.ico dist",
     "clean-and-copy": "npm run clean-dist && npm run copy-files",
     "prestart": "npm run clean-and-copy",
-    "start": "webpack-dev-server --content-base dist",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --content-base dist",
     "prebuild": "npm run clean-and-copy",
-    "build": "webpack",
+    "build": "cross-env NODE_ENV=development webpack",
+    "build:prod": "cross-env NODE_ENV=production webpack -p",
     "lint": "eslint ."
   }
 }
