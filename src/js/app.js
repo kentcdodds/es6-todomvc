@@ -2,7 +2,7 @@ import 'todomvc-common/base.css'
 import 'todomvc-app-css/index.css'
 
 import View from './view'
-import {$on, qsa, removeClass} from './helpers'
+import {$on, qsa, removeClass, addClass} from './helpers'
 import Controller from './controller'
 import Model from './model'
 import Store from './store'
@@ -30,6 +30,8 @@ function setView() {
 $on(window, 'load', function() {
   todo = new Todo('todos-vanillajs')
   setView()
-  removeClass(qsa('.hide'), 'hide')
+  const hiddenEls = qsa('.hide')
+  removeClass(hiddenEls, 'hide')
+  addClass(hiddenEls, 'show')
 })
 $on(window, 'hashchange', setView)
