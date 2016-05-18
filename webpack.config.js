@@ -1,9 +1,12 @@
 const {resolve} = require('path')
 module.exports = env => {
   return {
-    entry: './js/app.js',
+    entry: {
+      app: './js/app.js',
+      animalFacts: './animal-facts/js/app.js',
+    },
     output: {
-      filename: 'bundle.js',
+      filename: 'bundle.[name].js',
       path: resolve(__dirname, 'dist'),
       pathinfo: !env.prod,
     },
