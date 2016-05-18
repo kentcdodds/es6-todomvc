@@ -51,6 +51,7 @@
     "prestart": "npm run clean-and-copy",
     "start": "cross-env NODE_ENV=development webpack-dev-server --content-base dist",
     "prebuild": "npm run clean-and-copy",
+    "prebuild:prod": "npm run clean-and-copy",
     "build": "cross-env NODE_ENV=development webpack",
     "build:prod": "cross-env NODE_ENV=production webpack -p",
     "lint": "eslint ."
