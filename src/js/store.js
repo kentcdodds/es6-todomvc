@@ -1,3 +1,5 @@
+import {noop} from 'lodash'
+
 export default Store
 /**
  * Creates a new client side storage object and will create an empty
@@ -77,8 +79,7 @@ Store.prototype.save = function(updateData, callback, id) {
   var data = JSON.parse(localStorage[this._dbName])
   var todos = data.todos
 
-  callback = callback || function() {
-  }
+  callback = callback || noop
 
   // If an ID was actually given, find the item and update each property
   if (id) {

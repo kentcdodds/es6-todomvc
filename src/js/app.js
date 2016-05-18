@@ -1,8 +1,9 @@
 import 'todomvc-common/base.css'
 import 'todomvc-app-css/index.css'
+import $ from 'jquery'
 
 import View from './view'
-import {$on, qsa, removeClass} from './helpers'
+import {$on} from './helpers'
 import Controller from './controller'
 import Model from './model'
 import Store from './store'
@@ -30,6 +31,6 @@ function setView() {
 $on(window, 'load', function() {
   todo = new Todo('todos-vanillajs')
   setView()
-  removeClass(qsa('.hide'), 'hide')
+  $('.hide').removeClass('hide')
 })
 $on(window, 'hashchange', setView)
