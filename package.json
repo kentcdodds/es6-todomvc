@@ -1,6 +1,8 @@
 {
   "private": true,
   "dependencies": {
+    "react": "15.0.2",
+    "react-dom": "15.0.2",
     "todomvc-app-css": "2.0.4",
     "todomvc-common": "1.0.2"
   },
@@ -11,12 +13,14 @@
     "babel-loader": "6.2.4",
     "babel-plugin-__coverage__": "0.111111.11",
     "babel-preset-es2015-webpack": "6.4.1",
+    "babel-preset-react": "6.5.0",
     "babel-preset-stage-2": "6.5.0",
     "cpy-cli": "1.0.0",
     "css-loader": "0.23.1",
     "eslint": "2.9.0",
     "eslint-config-kentcdodds": "6.2.1",
     "eslint-loader": "1.3.0",
+    "eslint-plugin-react": "5.1.1",
     "ghooks": "1.2.1",
     "jasmine-core": "2.4.1",
     "karma": "0.13.22",

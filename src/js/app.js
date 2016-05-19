@@ -1,6 +1,10 @@
 import 'todomvc-common/base.css'
 import 'todomvc-app-css/index.css'
 
+import React from 'react'
+import {render} from 'react-dom'
+import Footer from './footer'
+
 import View from './view'
 import {$on, qsa, removeClass} from './helpers'
 import Controller from './controller'
@@ -25,6 +29,8 @@ function Todo(name) {
 
 function setView() {
   todo.controller.setView(document.location.hash)
+  const div = document.getElementById('react-root')
+  render(<Footer />, div)
 }
 
 $on(window, 'load', function() {

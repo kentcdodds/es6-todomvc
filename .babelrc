@@ -1,5 +1,5 @@
 {
-  "presets": ["es2015-webpack", "stage-2"],
+  "presets": ["es2015-webpack", "stage-2", "react"],
   "env": {
     "test": {
       "plugins": [
