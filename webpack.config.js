@@ -1,9 +1,16 @@
+const webpack = require('webpack')
 const {resolve} = require('path')
+
 const isProd = process.env.NODE_ENV === 'production'
+const isTest = process.env.NODE_ENV === 'test'
+
 module.exports = {
-  entry: './js/app.js',
+  entry: {
+    app: './js/app.js',
+    vendor: ['lodash', 'jquery'],
+  },
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle.[name].js',
     path: resolve(__dirname, 'dist'),
     pathinfo: true,
   },
@@ -15,4 +22,9 @@ module.exports = {
       {test: /\.css$/, loader: 'style!css'},
     ],
   },
+  plugins: [
+    isTest ? undefined : new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+    }),
+  ].filter(p => !!p),
 }
