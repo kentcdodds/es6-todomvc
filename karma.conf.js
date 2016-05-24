@@ -1,14 +1,15 @@
-const webpackConfig = require('./webpack.config')
+const webpackConfig = require('./webpack.config')({test: true})
+process.env.BABEL_ENV = 'test' // so we load the correct babel plugins
 require('babel-register')
 
 module.exports = function setKarmaConfig(config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine'],
-    files: ['test/**/*Spec.js'],
+    files: ['src/**/*.test.js'],
     exclude: [],
     preprocessors: {
-      'test/**/*Spec.js': ['webpack'],
+      'src/**/*.test.js': ['webpack'],
     },
     webpack: webpackConfig,
     webpackMiddleware: {noInfo: true},

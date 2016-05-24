@@ -13,7 +13,6 @@
     "babel-preset-es2015-webpack": "6.4.1",
     "babel-preset-stage-2": "6.5.0",
     "cpy-cli": "1.0.0",
-    "cross-env": "1.0.7",
     "css-loader": "0.23.1",
     "eslint": "2.9.0",
     "eslint-config-kentcdodds": "6.2.1",
@@ -32,7 +31,7 @@
     "style-loader": "0.13.1",
     "webpack": "2.1.0-beta.7",
     "webpack-dev-server": "2.0.0-beta",
-    "webpack-validator": "1.5.0"
+    "webpack-validator": "2.1.0"
   },
   "config": {
     "ghooks": {
@@ -40,20 +39,20 @@
     }
   },
   "scripts": {
-    "test": "cross-env NODE_ENV=test karma start",
-    "watch:test": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run",
+    "test": "karma start",
+    "watch:test": "karma start --auto-watch --no-single-run",
     "validate": "npm-run-all --parallel validate-webpack:* lint test",
-    "validate-webpack:dev": "cross-env NODE_ENV=development webpack-validator webpack.config.js",
-    "validate-webpack:prod": "cross-env NODE_ENV=production webpack-validator webpack.config.js",
+    "validate-webpack:dev": "webpack-validator webpack.config.js --env.dev",
+    "validate-webpack:prod": "webpack-validator webpack.config.js --env.prod",
     "clean-dist": "rimraf dist",
     "copy-files": "cpy src/index.html src/favicon.ico dist",
     "clean-and-copy": "npm run clean-dist && npm run copy-files",
     "prestart": "npm run clean-and-copy",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --content-base dist",
+    "start": "webpack-dev-server --env.dev --content-base dist",
     "prebuild": "npm run clean-and-copy",
     "prebuild:prod": "npm run clean-and-copy",
-    "build": "cross-env NODE_ENV=development webpack",
-    "build:prod": "cross-env NODE_ENV=production webpack -p",
+    "build": "webpack --env.dev",
+    "build:prod": "webpack --env.prod -p",
     "lint": "eslint ."
   }
 }

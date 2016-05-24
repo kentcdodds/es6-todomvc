@@ -1,4 +1,4 @@
-import Controller from '../src/js/controller'
+import Controller from './controller'
 
 describe('controller', () => {
   var subject, model, view
