@@ -30,8 +30,7 @@
     "rimraf": "2.5.2",
     "style-loader": "0.13.1",
     "webpack": "2.1.0-beta.7",
-    "webpack-dev-server": "2.0.0-beta",
-    "webpack-validator": "2.1.0"
+    "webpack-dev-server": "2.0.0-beta"
   },
   "config": {
     "ghooks": {
@@ -41,9 +40,7 @@
   "scripts": {
     "test": "karma start",
     "watch:test": "karma start --auto-watch --no-single-run",
-    "validate": "npm-run-all --parallel validate-webpack:* lint test",
-    "validate-webpack:dev": "webpack-validator webpack.config.js --env.dev",
-    "validate-webpack:prod": "webpack-validator webpack.config.js --env.prod",
+    "validate": "npm-run-all --parallel lint test",
     "clean-dist": "rimraf dist",
     "copy-files": "cpy src/index.html src/favicon.ico dist",
     "clean-and-copy": "npm run clean-dist && npm run copy-files",
