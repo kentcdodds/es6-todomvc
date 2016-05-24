@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const {resolve} = require('path')
 module.exports = env => {
   return {
@@ -19,5 +20,12 @@ module.exports = env => {
         {test: /\.css$/, loader: 'style!css'},
       ],
     },
+    plugins: [
+      env.test ? undefined : new webpack.optimize.CommonsChunkPlugin({
+        name: 'common',
+        filename: 'bundle.common.js',
+        chunks: ['app', 'animalFacts']
+      }),
+    ].filter(p => !!p),
   }
 }
