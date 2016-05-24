@@ -55,7 +55,7 @@
     "prebuild": "npm run clean-and-copy",
     "prebuild:prod": "npm run clean-and-copy",
     "build": "webpack --env.dev",
-    "build:prod": "webpack --env.prod -p",
+    "build:prod": "webpack --env.prod",
     "lint": "eslint ."
   }
 }
