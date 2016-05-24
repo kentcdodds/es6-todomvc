@@ -5,11 +5,11 @@ module.exports = env => {
     output: {
       filename: 'bundle.js',
       path: resolve(__dirname, 'dist'),
-      pathinfo: true,
+      pathinfo: !env.prod,
     },
     context: resolve(__dirname, 'src'),
     devtool: env.prod ? 'source-map' : 'eval',
-    bail: !env.dev,
+    bail: env.prod,
     module: {
       loaders: [
         {test: /\.js$/, loader: 'babel!eslint', exclude: /node_modules/},
