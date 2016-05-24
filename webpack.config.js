@@ -9,6 +9,7 @@ module.exports = env => {
     },
     context: resolve(__dirname, 'src'),
     devtool: env.prod ? 'source-map' : 'eval',
+    bail: !env.dev,
     module: {
       loaders: [
         {test: /\.js$/, loader: 'babel!eslint', exclude: /node_modules/},
