@@ -1,6 +1,6 @@
 import 'todomvc-common/base.css'
 import 'todomvc-app-css/index.css'
-import './non_node_modules/sweet-lodash-mixins'
+import 'imports?_=lodash!./non_node_modules/sweet-lodash-mixins' // eslint-disable-line
 
 import View from './view'
 import {$on, qsa, removeClass} from './helpers'
