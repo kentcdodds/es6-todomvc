@@ -1,3 +1,5 @@
+import leftPad from './non_node_modules/left-pad'
+
 export default Model
 
 /**
@@ -22,7 +24,7 @@ Model.prototype.create = function(title, callback) {
   }
 
   var newItem = {
-    title: title.trim(),
+    title: leftPad(title, 5).trim(), // I realize this is non-sensicle ¯\_(ツ)_/¯
     completed: false
   }
 
