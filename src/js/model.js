@@ -1,4 +1,4 @@
-import leftPad from 'imports?window=>{}!exports?leftPad!./non_node_modules/left-pad' // eslint-disable-line
+import leftPad from './non_node_modules/left-pad'
 
 export default Model
 

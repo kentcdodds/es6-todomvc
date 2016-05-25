@@ -14,6 +14,10 @@ module.exports = env => {
       loaders: [
         {test: /\.js$/, loader: 'babel!eslint', exclude: /node_modules/},
         {test: /\.css$/, loader: 'style!css'},
+        {
+          test: require.resolve('./src/js/non_node_modules/left-pad'),
+          loader: 'imports?window=>{}!exports?leftPad',
+        }
       ],
     },
   }
