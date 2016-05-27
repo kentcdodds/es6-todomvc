@@ -1,5 +1,7 @@
 import 'todomvc-common/base.css'
 import 'todomvc-app-css/index.css'
+import 'lodash'
+import 'jquery'
 
 import View from './view'
 import {$on, qsa, removeClass} from './helpers'

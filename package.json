@@ -1,6 +1,8 @@
 {
   "private": true,
   "dependencies": {
+    "jquery": "2.2.4",
+    "lodash": "4.13.1",
     "todomvc-app-css": "2.0.4",
     "todomvc-common": "1.0.2"
   },

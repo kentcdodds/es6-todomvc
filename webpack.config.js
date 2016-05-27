@@ -1,11 +1,18 @@
 const {resolve} = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = env => {
+  const ifVal = (add, val) => add ? val : undefined
+  const ifProd = val => ifVal(env.prod, val)
+  const removeEmpty = array => array.filter(i => !!i)
   return {
-    entry: './js/app.js',
+    entry: {
+      app: './js/app.js',
+      vendor: ['jquery', 'lodash'],
+    },
     output: {
-      filename: 'bundle.[chunkhash].js',
+      filename: 'bundle.[name].[chunkhash].js',
       path: resolve(__dirname, 'dist'),
       pathinfo: !env.prod,
     },
@@ -18,10 +25,18 @@ module.exports = env => {
         {test: /\.css$/, loader: 'style!css'},
       ],
     },
-    plugins: [
+    plugins: removeEmpty([
+      ifProd(new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+      })),
       new HtmlWebpackPlugin({
-        template: './index.html'
+        template: './index.html',
+        chunks: removeEmpty([
+          ifProd('vendor'),
+          'app',
+        ]),
       }),
-    ]
+    ]),
+    recordsPath: ifProd(resolve(__dirname, '.cache/records.json')),
   }
 }
