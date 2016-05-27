@@ -1,9 +1,11 @@
 const {resolve} = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 module.exports = env => {
   return {
     entry: './js/app.js',
     output: {
-      filename: 'bundle.js',
+      filename: 'bundle.[chunkhash].js',
       path: resolve(__dirname, 'dist'),
       pathinfo: !env.prod,
     },
@@ -16,5 +18,10 @@ module.exports = env => {
         {test: /\.css$/, loader: 'style!css'},
       ],
     },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: './index.html'
+      }),
+    ]
   }
 }
