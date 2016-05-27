@@ -33,3 +33,9 @@ $on(window, 'load', function() {
   removeClass(qsa('.hide'), 'hide')
 })
 $on(window, 'hashchange', setView)
+
+if (module.hot) {
+  module.hot.accept('./controller', () => {
+    todo.controller = new Controller(todo.model, todo.view)
+  })
+}
