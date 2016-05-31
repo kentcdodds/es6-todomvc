@@ -10,12 +10,5 @@
     "valid-jsdoc": 0,
     "vars-on-top": 0,
     "complexity": [2, 6],
-  },
-  "globals": {
-    "jasmine": false,
-    "describe": false,
-    "it": false,
-    "beforeEach": false,
-    "expect": false,
   }
 }
