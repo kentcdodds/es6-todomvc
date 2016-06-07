@@ -10,5 +10,10 @@
     "valid-jsdoc": 0,
     "vars-on-top": 0,
     "complexity": [2, 6],
+  },
+  "globals": {
+    "describe": false,
+    "it": false,
+    "expect": false
   }
 }
