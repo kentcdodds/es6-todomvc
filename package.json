@@ -17,6 +17,10 @@
     "eslint-config-kentcdodds": "6.2.1",
     "eslint-loader": "1.3.0",
     "ghooks": "1.2.1",
+    "karma": "0.13.22",
+    "karma-chrome-launcher": "1.0.1",
+    "karma-mocha": "1.0.1",
+    "mocha": "2.5.3",
     "npm-run-all": "1.8.0",
     "opt-cli": "1.4.2",
     "rimraf": "2.5.2",
@@ -31,6 +35,8 @@
     }
   },
   "scripts": {
+    "test": "karma start",
+    "watch:test": "npm test -- --auto-watch --no-single-run",
     "validate": "npm-run-all --parallel validate-webpack:* lint",
     "validate-webpack:dev": "webpack-validator webpack.config.js --env.dev",
     "validate-webpack:prod": "webpack-validator webpack.config.js --env.prod",
