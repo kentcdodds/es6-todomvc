@@ -29,9 +29,9 @@
     "opt-cli": "1.4.2",
     "rimraf": "2.5.2",
     "style-loader": "0.13.1",
-    "webpack": "2.1.0-beta.7",
+    "webpack": "2.1.0-beta.12",
     "webpack-dev-server": "2.0.0-beta",
-    "webpack-validator": "2.1.0"
+    "webpack-validator": "2.1.2"
   },
   "config": {
     "ghooks": {
