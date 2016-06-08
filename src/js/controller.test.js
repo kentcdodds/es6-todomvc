@@ -1,8 +1,8 @@
 describe('test', () => {
   it('works', () => {
-    // test stuff
+    expect(true).to.be.true
   })
   it('works again', () => {
-    // more tests
+    expect('hi').to.equal('hi')
   })
 })
