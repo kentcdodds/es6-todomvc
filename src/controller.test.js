@@ -1,8 +1,7 @@
-describe('test', () => {
-  it('works', () => {
-    expect(true).to.be.true
-  })
-  it('works again', () => {
-    expect('hi').to.equal('hi')
+var Controller = require('./controller')
+
+describe('controller', () => {
+  it('exists', () => {
+    expect(Controller).to.exist
   })
 })

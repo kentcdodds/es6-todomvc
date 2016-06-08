@@ -19,6 +19,7 @@
     "karma-chai": "0.1.0",
     "karma-chrome-launcher": "1.0.1",
     "karma-mocha": "1.1.1",
+    "karma-webpack": "1.7.0",
     "mocha": "3.0.1",
     "npm-run-all": "2.3.0",
     "opt-cli": "1.5.1",
