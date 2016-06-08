@@ -1,3 +1,10 @@
 {
-  "presets": ["es2015-webpack", "stage-2"]
+  "presets": ["es2015-webpack", "stage-2"],
+  "env": {
+    "test": {
+      "plugins": [
+        ["__coverage__", {"ignore": "*.test.*"}]
+      ]
+    }
+  }
 }
