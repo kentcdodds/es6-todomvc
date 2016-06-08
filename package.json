@@ -42,7 +42,7 @@
   "scripts": {
     "test": "karma start",
     "watch:test": "npm test -- --auto-watch --no-single-run",
-    "validate": "npm-run-all --parallel validate-webpack:* lint",
+    "validate": "npm-run-all --parallel validate-webpack:* lint test",
     "validate-webpack:dev": "webpack-validator webpack.config.js --env.dev",
     "validate-webpack:prod": "webpack-validator webpack.config.js --env.prod",
     "clean-dist": "rimraf dist",
