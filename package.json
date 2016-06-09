@@ -19,6 +19,7 @@
     "eslint-config-kentcdodds": "6.2.1",
     "eslint-loader": "1.3.0",
     "ghooks": "1.2.1",
+    "istanbul": "0.4.3",
     "karma": "0.13.22",
     "karma-chai": "0.1.0",
     "karma-chrome-launcher": "1.0.1",
@@ -41,8 +42,9 @@
   },
   "scripts": {
     "test": "karma start",
+    "check-coverage": "istanbul check-coverage --statements 23 --branches 5 --functions 9 --lines 24",
     "watch:test": "npm test -- --auto-watch --no-single-run",
-    "validate": "npm-run-all --parallel validate-webpack:* lint test",
+    "validate": "npm-run-all --parallel validate-webpack:* lint test --serial check-coverage",
     "validate-webpack:dev": "webpack-validator webpack.config.js --env.dev",
     "validate-webpack:prod": "webpack-validator webpack.config.js --env.prod",
     "clean-dist": "rimraf dist",
