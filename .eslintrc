@@ -1,5 +1,5 @@
 {
-  "extends": ["kentcdodds"],
+  "extends": ["kentcdodds/es-next"],
   "rules": {
     // these are only here because I did not
     // want to update the entire codebase ¯\_(ツ)_/¯

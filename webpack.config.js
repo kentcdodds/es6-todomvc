@@ -13,6 +13,7 @@ module.exports = () => {
     devtool: 'eval',
     module: {
       loaders: [
+        {test: /\.js$/, loaders: ['babel'], exclude: /node_modules/},
         {test: /\.css$/, loaders: ['style', 'css']},
       ],
     },
