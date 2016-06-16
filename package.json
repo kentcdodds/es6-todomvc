@@ -8,7 +8,13 @@
     "eslint-config-kentcdodds": "^9.0.0",
     "ghooks": "1.3.2",
     "http-server": "0.9.0",
-    "opt-cli": "1.5.1"
+    "npm-run-all": "2.3.0",
+    "opt-cli": "1.5.1",
+    "rimraf": "2.5.4",
+    "webpack": "2.1.0-beta.20",
+    "webpack-config-utils": "2.0.0",
+    "webpack-dev-server": "2.1.0-beta.0",
+    "webpack-validator": "2.2.7"
   },
   "config": {
     "ghooks": {
@@ -16,8 +22,13 @@
     }
   },
   "scripts": {
-    "validate": "npm run lint",
-    "start": "http-server --silent -c-1",
+    "prebuild": "rimraf dist",
+    "build": "webpack --env.prod -p",
+    "prebuild:dev": "rimraf dist",
+    "build:dev": "webpack --env.dev",
+    "start": "http-server",
+    "dev": "webpack-dev-server --env.dev",
+    "validate": "npm-run-all --parallel lint build",
     "lint": "eslint ."
   }
 }
