@@ -1,17 +1,19 @@
-/* eslint no-invalid-this: 0, complexity:[2, 9] */
-import {qs, qsa, $on, $parent, $delegate} from './helpers'
+/*global qs, qsa, $on, $parent, $delegate */
+/* eslint no-invalid-this: 0 */
 
-/**
- * View that abstracts away the browser's DOM completely.
- * It has two simple entry points:
- *
- *   - bind(eventName, handler)
- *     Takes a todo application event and registers the handler
- *   - render(command, parameterObject)
- *     Renders the given command with the options
- */
-export default class View {
-  constructor(template) {
+(function(window) {
+  'use strict'
+
+  /**
+   * View that abstracts away the browser's DOM completely.
+   * It has two simple entry points:
+   *
+   *   - bind(eventName, handler)
+   *     Takes a todo application event and registers the handler
+   *   - render(command, parameterObject)
+   *     Renders the given command with the options
+   */
+  function View(template) {
     this.template = template
 
     this.ENTER_KEY = 13
@@ -26,7 +28,7 @@ export default class View {
     this.$newTodo = qs('.new-todo')
   }
 
-  _removeItem(id) {
+  View.prototype._removeItem = function(id) {
     var elem = qs('[data-id="' + id + '"]')
 
     if (elem) {
@@ -34,12 +36,47 @@ export default class View {
     }
   }
 
-  _clearCompletedButton(completedCount, visible) {
+  View.prototype._clearCompletedButton = function(completedCount, visible) {
     this.$clearCompleted.innerHTML = this.template.clearCompletedButton(completedCount)
     this.$clearCompleted.style.display = visible ? 'block' : 'none'
   }
 
-  _editItemDone(id, title) {
+  View.prototype._setFilter = function(currentPage) {
+    qs('.filters .selected').className = ''
+    qs('.filters [href="#/' + currentPage + '"]').className = 'selected'
+  }
+
+  View.prototype._elementComplete = function(id, completed) {
+    var listItem = qs('[data-id="' + id + '"]')
+
+    if (!listItem) {
+      return
+    }
+
+    listItem.className = completed ? 'completed' : ''
+
+    // In case it was toggled from an event and not by clicking the checkbox
+    qs('input', listItem).checked = completed
+  }
+
+  View.prototype._editItem = function(id, title) {
+    var listItem = qs('[data-id="' + id + '"]')
+
+    if (!listItem) {
+      return
+    }
+
+    listItem.className = listItem.className + ' editing'
+
+    var input = document.createElement('input')
+    input.className = 'edit'
+
+    listItem.appendChild(input)
+    input.focus()
+    input.value = title
+  }
+
+  View.prototype._editItemDone = function(id, title) {
     var listItem = qs('[data-id="' + id + '"]')
 
     if (!listItem) {
@@ -56,7 +93,7 @@ export default class View {
     })
   }
 
-  render(viewCmd, parameter) {
+  View.prototype.render = function(viewCmd, parameter) {
     var that = this
     var viewCommands = {
       showEntries: function() {
@@ -78,16 +115,16 @@ export default class View {
         that.$toggleAll.checked = parameter.checked
       },
       setFilter: function() {
-        _setFilter(parameter)
+        that._setFilter(parameter)
       },
       clearNewTodo: function() {
         that.$newTodo.value = ''
       },
       elementComplete: function() {
-        _elementComplete(parameter.id, parameter.completed)
+        that._elementComplete(parameter.id, parameter.completed)
       },
       editItem: function() {
-        _editItem(parameter.id, parameter.title)
+        that._editItem(parameter.id, parameter.title)
       },
       editItemDone: function() {
         that._editItemDone(parameter.id, parameter.title)
@@ -97,12 +134,17 @@ export default class View {
     viewCommands[viewCmd]()
   }
 
-  _bindItemEditDone(handler) {
+  View.prototype._itemId = function(element) {
+    var li = $parent(element, 'li')
+    return parseInt(li.dataset.id, 10)
+  }
+
+  View.prototype._bindItemEditDone = function(handler) {
     var that = this
     $delegate(that.$todoList, 'li .edit', 'blur', function() {
       if (!this.dataset.iscanceled) {
         handler({
-          id: _itemId(this),
+          id: that._itemId(this),
           title: this.value
         })
       }
@@ -117,19 +159,19 @@ export default class View {
     })
   }
 
-  _bindItemEditCancel(handler) {
+  View.prototype._bindItemEditCancel = function(handler) {
     var that = this
     $delegate(that.$todoList, 'li .edit', 'keyup', function(event) {
       if (event.keyCode === that.ESCAPE_KEY) {
         this.dataset.iscanceled = true
         this.blur()
 
-        handler({id: _itemId(this)})
+        handler({id: that._itemId(this)})
       }
     })
   }
 
-  bind(event, handler) {
+  View.prototype.bind = function(event, handler) { // eslint-disable-line
     var that = this
     if (event === 'newTodo') {
       $on(that.$newTodo, 'change', function() {
@@ -148,18 +190,18 @@ export default class View {
 
     } else if (event === 'itemEdit') {
       $delegate(that.$todoList, 'li label', 'dblclick', function() {
-        handler({id: _itemId(this)})
+        handler({id: that._itemId(this)})
       })
 
     } else if (event === 'itemRemove') {
       $delegate(that.$todoList, '.destroy', 'click', function() {
-        handler({id: _itemId(this)})
+        handler({id: that._itemId(this)})
       })
 
     } else if (event === 'itemToggle') {
       $delegate(that.$todoList, '.toggle', 'click', function() {
         handler({
-          id: _itemId(this),
+          id: that._itemId(this),
           completed: this.checked
         })
       })
@@ -171,44 +213,8 @@ export default class View {
       that._bindItemEditCancel(handler)
     }
   }
-}
 
-function _setFilter(currentPage) {
-  qs('.filters .selected').className = ''
-  qs('.filters [href="#/' + currentPage + '"]').className = 'selected'
-}
-
-function _elementComplete(id, completed) {
-  var listItem = qs('[data-id="' + id + '"]')
-
-  if (!listItem) {
-    return
-  }
-
-  listItem.className = completed ? 'completed' : ''
-
-  // In case it was toggled from an event and not by clicking the checkbox
-  qs('input', listItem).checked = completed
-}
-
-function _editItem(id, title) {
-  var listItem = qs('[data-id="' + id + '"]')
-
-  if (!listItem) {
-    return
-  }
-
-  listItem.className = listItem.className + ' editing'
-
-  var input = document.createElement('input')
-  input.className = 'edit'
-
-  listItem.appendChild(input)
-  input.focus()
-  input.value = title
-}
-
-function _itemId(element) {
-  var li = $parent(element, 'li')
-  return parseInt(li.dataset.id, 10)
-}
+  // Export to window
+  window.app = window.app || {}
+  window.app.View = View
+})(window)

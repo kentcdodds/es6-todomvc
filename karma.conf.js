@@ -1,21 +1,19 @@
-const webpackEnv = {test: true}
-const webpackConfig = require('./webpack.config')(webpackEnv)
-process.env.BABEL_ENV = 'test' // so we load the correct babel plugins
-const testGlob = 'src/js/**/*.test.js'
-const srcGlob = 'src/js/**/*!(test|stub).js'
-
+var preprocessors = {}
+preprocessors['src/**/*.js'] = ['coverage']
 module.exports = function setKarmaConfig(config) {
   config.set({
     basePath: '',
     frameworks: ['mocha', 'chai'],
-    files: [testGlob, srcGlob],
-    preprocessors: {
-      [testGlob]: ['webpack'],
-      [srcGlob]: ['webpack'],
-    },
-    webpack: webpackConfig,
-    webpackMiddleware: {noInfo: true},
+    files: [
+      'src/**/*.js',
+      'test/stub/**/*.js',
+      'test/unit/**/*.js',
+    ],
+    exclude: [
+      'src/app.js',
+    ],
     reporters: ['progress', 'coverage'],
+    preprocessors: preprocessors,
     coverageReporter: {
       reporters: [
         {type: 'lcov', dir: 'coverage/', subdir: '.'},

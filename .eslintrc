@@ -1,5 +1,5 @@
 {
-  "extends": ["kentcdodds/es-next"],
+  "extends": ["kentcdodds"],
   "rules": {
     // these are only here because I did not
     // want to update the entire codebase ¯\_(ツ)_/¯
@@ -9,11 +9,17 @@
     "comma-dangle": 0,
     "valid-jsdoc": 0,
     "vars-on-top": 0,
-    "complexity": [2, 6],
+    "complexity": [2, 8],
+    "max-depth": [2, 6],
+    "consistent-return": 0,
+    // es6 stuff we technically can not do yet
+    "object-shorthand": 0,
   },
   "globals": {
     "describe": false,
     "it": false,
-    "expect": false
+    "expect": false,
+    "$on": false,
+    "beforeEach": false,
   }
 }
