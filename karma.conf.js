@@ -1,26 +1,24 @@
-var preprocessors = {}
-preprocessors['src/**/*.js'] = ['coverage']
+const webpackConfig = require('./webpack.config')()
+const testGlob = 'src/**/*.test.js'
+
 module.exports = function setKarmaConfig(config) {
   config.set({
     basePath: '',
     frameworks: ['mocha', 'chai'],
-    files: [
-      'src/**/*.js',
-      'test/stub/**/*.js',
-      'test/unit/**/*.js',
-    ],
-    exclude: [
-      'src/app.js',
-    ],
+    files: [testGlob],
     reporters: ['progress', 'coverage'],
-    preprocessors: preprocessors,
-    coverageReporter: {
-      reporters: [
-        {type: 'lcov', dir: 'coverage/', subdir: '.'},
-        {type: 'json', dir: 'coverage/', subdir: '.'},
-        {type: 'text-summary'},
-      ],
+    preprocessors: {
+      [testGlob]: ['webpack'],
     },
+    webpack: webpackConfig,
+    webpackMiddleware: {noInfo: true},
+    // coverageReporter: {
+    //   reporters: [
+    //     {type: 'lcov', dir: 'coverage/', subdir: '.'},
+    //     {type: 'json', dir: 'coverage/', subdir: '.'},
+    //     {type: 'text-summary'},
+    //   ],
+    // },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

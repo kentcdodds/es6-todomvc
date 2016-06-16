@@ -1,4 +1,7 @@
-'use strict'
+require('./controller')
+require('./model.stub')
+require('./view.stub')
+
 var Controller, getModelStub, getViewStub
 
 describe('controller', function() {
