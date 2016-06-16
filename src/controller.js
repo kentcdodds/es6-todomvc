@@ -1,4 +1,4 @@
-module.exports = Controller
+export default Controller
 /**
 * Takes a model and view and acts as the controller between them
 *

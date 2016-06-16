@@ -1,14 +1,12 @@
-require('todomvc-common')
-require('todomvc-common/base.css')
-require('todomvc-app-css/index.css')
-var View = require('./view')
-var helpers = require('./helpers')
-var Controller = require('./controller')
-var Model = require('./model')
-var Store = require('./store')
-var Template = require('./template')
-
-var $on = helpers.$on
+import 'todomvc-common'
+import 'todomvc-common/base.css'
+import 'todomvc-app-css/index.css'
+import View from './view'
+import {$on} from './helpers'
+import Controller from './controller'
+import Model from './model'
+import Store from './store'
+import Template from './template'
 
 /**
 * Sets up a brand new Todo list.
@@ -24,7 +22,7 @@ function Todo(name) {
 }
 
 function setView() {
-  var todo = new Todo('todos-vanillajs')
+  const todo = new Todo('todos-vanillajs')
   todo.controller.setView(document.location.hash)
 }
 

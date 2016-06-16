@@ -1,4 +1,4 @@
-module.exports = function getViewStub() {
+export default function getViewStub() {
   return {
     bind: function() {}
   }

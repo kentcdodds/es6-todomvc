@@ -1,4 +1,4 @@
-module.exports = Template
+export default Template
 
 var htmlEscapes = {
   '&': '&amp;',

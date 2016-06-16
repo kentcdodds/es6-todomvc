@@ -1,6 +1,6 @@
-var Controller = require('./controller')
-var getModelStub = require('./model.stub')
-var getViewStub = require('./view.stub')
+import Controller from './controller'
+import getModelStub from './model.stub'
+import getViewStub from './view.stub'
 
 describe('controller', function() {
   it('can be created', function() {

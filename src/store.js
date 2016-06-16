@@ -1,4 +1,4 @@
-module.exports = Store
+export default Store
 /**
 * Creates a new client side storage object and will create an empty
 * collection if no collection already exists.

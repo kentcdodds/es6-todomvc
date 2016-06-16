@@ -1,4 +1,4 @@
-module.exports = function getModelStub() {
+export default function getModelStub() {
   return {
   }
 }
