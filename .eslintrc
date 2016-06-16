@@ -19,8 +19,6 @@
     "describe": false,
     "it": false,
     "expect": false,
-    "$on": false,
     "beforeEach": false,
-    "app": true,
   }
 }

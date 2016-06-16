@@ -1,3 +1,4 @@
+module.exports = Store
 /**
 * Creates a new client side storage object and will create an empty
 * collection if no collection already exists.
@@ -134,7 +135,3 @@ Store.prototype.drop = function(callback) {
   localStorage[this._dbName] = JSON.stringify({todos: []})
   callback.call(this, JSON.parse(localStorage[this._dbName]).todos)
 }
-
-// Export to window
-window.app = window.app || {}
-window.app.Store = Store

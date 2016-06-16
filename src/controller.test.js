@@ -1,16 +1,8 @@
-require('./controller')
-require('./model.stub')
-require('./view.stub')
-
-var Controller, getModelStub, getViewStub
+var Controller = require('./controller')
+var getModelStub = require('./model.stub')
+var getViewStub = require('./view.stub')
 
 describe('controller', function() {
-  beforeEach(function() {
-    Controller = window.app.Controller
-    getModelStub = window.stubs.getModelStub
-    getViewStub = window.stubs.getViewStub
-  })
-
   it('can be created', function() {
     var view = getViewStub()
     var model = getModelStub()

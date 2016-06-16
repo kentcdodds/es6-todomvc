@@ -1,3 +1,4 @@
+module.exports = Controller
 /**
 * Takes a model and view and acts as the controller between them
 *
@@ -258,7 +259,3 @@ Controller.prototype._updateFilterState = function(currentPage) {
 
   this.view.render('setFilter', currentPage)
 }
-
-// Export to window
-window.app = window.app || {}
-window.app.Controller = Controller
