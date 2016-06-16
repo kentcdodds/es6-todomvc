@@ -8,6 +8,7 @@
     "babel-eslint": "6.0.4",
     "chai": "3.5.0",
     "cpy-cli": "1.0.0",
+    "css-loader": "0.23.1",
     "eslint": "2.9.0",
     "eslint-config-kentcdodds": "6.2.1",
     "ghooks": "1.2.1",
@@ -22,6 +23,7 @@
     "npm-run-all": "1.8.0",
     "opt-cli": "1.4.2",
     "rimraf": "2.5.2",
+    "style-loader": "0.13.1",
     "webpack": "2.1.0-beta.13",
     "webpack-dev-server": "2.1.0-beta.0",
     "webpack-validator": "2.1.3"
