@@ -1,7 +1,8 @@
 /* global app, $on */
-(function(window) {
-  'use strict'
+'use strict'
 
-  $on(window, 'load', app.onLoad)
-  $on(window, 'hashchange', app.onLoad)
-})(window)
+require('./app')
+require('./helpers')
+
+$on(window, 'load', app.onLoad)
+$on(window, 'hashchange', app.onLoad)
