@@ -17,3 +17,7 @@ This codebase was originally taken from the TodoMVC project starting [here](http
 3. Run `npm install`
 4. Run `npm run validate`
 5. If everything's running without errors, you can start checking out the available branches (`git remote show origin`)
+
+## Notes
+
+Because Webpack 2 is currently in beta, there are issues with `peerDependencies`, so you’ll have to use npm version 3 to be able to install the dependencies.
