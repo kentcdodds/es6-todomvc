@@ -1,5 +1,5 @@
 {
-  "extends": ["kentcdodds/es-next"],
+  "extends": ["kentcdodds/es-next", "kentcdodds/import", "kentcdodds/webpack"],
   "rules": {
     // these are only here because I did not
     // want to update the entire codebase ¯\_(ツ)_/¯
