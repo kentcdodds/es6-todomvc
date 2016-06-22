@@ -1,4 +1,4 @@
-const {resolve} = require('path')
+const resolve = require('path').resolve
 const webpackValidator = require('webpack-validator')
 module.exports = () => {
   return webpackValidator({
