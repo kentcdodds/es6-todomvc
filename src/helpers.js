@@ -6,8 +6,16 @@
   window.qs = function(selector, scope) {
     return (scope || document).querySelector(selector)
   }
+
   window.qsa = function(selector, scope) {
     return (scope || document).querySelectorAll(selector)
+  }
+
+
+  window.log = function log() {
+    if (window.console && window.console.log) {
+      window.console.log.apply(window.console, arguments) // eslint-disable-line
+    }
   }
 
   // addEventListener wrapper:
@@ -44,6 +52,28 @@
       return element.parentNode
     }
     return window.$parent(element.parentNode, tagName)
+  }
+
+  // removes an element from an array
+  // const x = [1,2,3]
+  // remove(x, 2)
+  // x ~== [1,3]
+  window.remove = function remove(array, thing) {
+    const index = array.indexOf(thing)
+    if (index === -1) {
+      return array
+    }
+    array.splice(index, 1)
+  }
+
+  // pad the left of the given string by the given size with the given character
+  // leftPad('10', 3, '0') -> 010
+  window.leftPad = function leftPad(str, size, padWith) {
+    if (size <= str.length) {
+      return str
+    } else {
+      return Array(size - str.length + 1).join(padWith || '0') + str
+    }
   }
 
   // Allow for looping on nodes by chaining:

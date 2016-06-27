@@ -1,27 +1,14 @@
 {
   "private": true,
   "dependencies": {
-    "todomvc-app-css": "2.0.4",
-    "todomvc-common": "1.0.2"
+    "todomvc-app-css": "2.0.6"
   },
   "devDependencies": {
-    "babel-eslint": "6.0.4",
-    "chai": "3.5.0",
-    "cpy-cli": "1.0.0",
-    "eslint": "2.9.0",
-    "eslint-config-kentcdodds": "6.2.1",
-    "ghooks": "1.2.1",
+    "eslint": "3.1.1",
+    "eslint-config-kentcdodds": "^8.1.3",
+    "ghooks": "1.3.2",
     "http-server": "0.9.0",
-    "istanbul": "0.4.3",
-    "karma": "0.13.22",
-    "karma-chai": "0.1.0",
-    "karma-chrome-launcher": "1.0.1",
-    "karma-coverage": "1.0.0",
-    "karma-mocha": "1.0.1",
-    "mocha": "2.5.3",
-    "npm-run-all": "1.8.0",
-    "opt-cli": "1.4.2",
-    "rimraf": "2.5.2"
+    "opt-cli": "1.5.1"
   },
   "config": {
     "ghooks": {
@@ -29,12 +16,8 @@
     }
   },
   "scripts": {
-    "test": "karma start",
-    "check-coverage": "istanbul check-coverage --statements 22 --branches 5 --functions 0 --lines 22",
-    "watch:test": "npm test -- --auto-watch --no-single-run",
-    "validate": "npm-run-all --parallel lint test --serial check-coverage",
-    "start": "http-server",
-    "lint": "eslint .",
-    "setup": "npm install && npm run validate"
+    "validate": "npm run lint",
+    "start": "http-server --silent -c-1",
+    "lint": "eslint ."
   }
 }

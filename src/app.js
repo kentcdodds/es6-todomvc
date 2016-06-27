@@ -1,5 +1,5 @@
-/* global app, $on */
-(function() {
+/* global app, log */
+(function(window) {
   'use strict'
 
   /**
@@ -15,11 +15,14 @@
     this.controller = new app.Controller(this.model, this.view)
   }
 
-  function setView() {
+  function onLoad() {
     var todo = new Todo('todos-vanillajs')
     todo.controller.setView(document.location.hash)
+    log('view set')
   }
 
-  $on(window, 'load', setView)
-  $on(window, 'hashchange', setView)
-})()
+
+  // Export to window
+  window.app = window.app || {}
+  window.app.onLoad = onLoad
+})(window)
