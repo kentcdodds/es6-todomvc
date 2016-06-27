@@ -1,7 +1,7 @@
 module.exports = config => {
   config.set({
     basePath: '',
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'chai'],
     files: [
       'src/**/*.test.js',
     ],
