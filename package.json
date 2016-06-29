@@ -14,6 +14,10 @@
     "eslint-config-kentcdodds": "^9.0.0",
     "ghooks": "1.3.2",
     "http-server": "0.9.0",
+    "karma": "1.1.2",
+    "karma-chrome-launcher": "1.0.1",
+    "karma-mocha": "1.1.1",
+    "mocha": "3.0.1",
     "npm-run-all": "2.3.0",
     "opt-cli": "1.5.1",
     "rimraf": "2.5.4",
@@ -38,7 +42,9 @@
     "debug": "node-nightly --inspect --debug-brk node_modules/.bin/webpack --env.debug",
     "debug:dev": "npm run debug -- --env.dev",
     "debug:prod": "npm run debug -- --env.prod",
-    "validate": "npm-run-all --parallel lint build",
+    "test": "karma start",
+    "watch:test": "npm test -- --auto-watch --no-single-run",
+    "validate": "npm-run-all --parallel lint build test",
     "lint": "eslint ."
   }
 }
