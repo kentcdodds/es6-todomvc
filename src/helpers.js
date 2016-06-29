@@ -1,4 +1,4 @@
-export {qs, qsa, $on, $delegate, $parent}
+export {qs, qsa, $on, $delegate, $parent, log}
 
 // Get element(s) by CSS selector:
 function qs(selector, scope) {
@@ -6,6 +6,12 @@ function qs(selector, scope) {
 }
 function qsa(selector, scope) {
   return (scope || document).querySelectorAll(selector)
+}
+
+function log(...args) {
+  if (window.console && window.console.log) {
+    window.console.log(...args)
+  }
 }
 
 // addEventListener wrapper:

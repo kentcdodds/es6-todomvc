@@ -2,7 +2,7 @@ import 'todomvc-common/base.css'
 import 'todomvc-app-css/index.css'
 
 import View from './view'
-import {$on} from './helpers'
+import {$on, log} from './helpers'
 import Controller from './controller'
 import Model from './model'
 import Store from './store'
@@ -24,6 +24,7 @@ function Todo(name) {
 function setView() {
   var todo = new Todo('todos-vanillajs')
   todo.controller.setView(document.location.hash)
+  log('view set')
 }
 
 $on(window, 'load', setView)
