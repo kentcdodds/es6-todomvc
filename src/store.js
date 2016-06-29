@@ -1,11 +1,13 @@
+export default Store
+
 /**
-* Creates a new client side storage object and will create an empty
-* collection if no collection already exists.
-*
-* @param {string} name The name of our DB we want to use
-* @param {function} callback Our fake DB uses callbacks because in
-* real life you probably would be making AJAX calls
-*/
+ * Creates a new client side storage object and will create an empty
+ * collection if no collection already exists.
+ *
+ * @param {string} name The name of our DB we want to use
+ * @param {function} callback Our fake DB uses callbacks because in
+ * real life you probably would be making AJAX calls
+ */
 function Store(name, callback) {
   callback = callback || function() {
   }
@@ -32,8 +34,8 @@ function Store(name, callback) {
 *
 * @example
 * db.find({foo: 'bar', hello: 'world'}, function (data) {
-*	 // data will return any items that have foo: bar and
-*	 // hello: world in their properties
+*   // data will return any items that have foo: bar and
+*   // hello: world in their properties
 * });
 */
 Store.prototype.find = function(query, callback) {
@@ -83,10 +85,8 @@ Store.prototype.save = function(updateData, callback, id) {
   if (id) {
     for (var i = 0; i < todos.length; i++) {
       if (todos[i].id === id) {
-        for (var key in updateData) {
-          if (updateData.hasOwnProperty(key)) {
-            todos[i][key] = updateData[key]
-          }
+        for (var key in updateData) { // eslint-disable-line guard-for-in
+          todos[i][key] = updateData[key]
         }
         break
       }
@@ -115,7 +115,7 @@ Store.prototype.remove = function(id, callback) {
   var todos = data.todos
 
   for (var i = 0; i < todos.length; i++) {
-    if (todos[i].id == id) { // eslint-disable-line
+    if (todos[i].id === id) {
       todos.splice(i, 1)
       break
     }
@@ -134,7 +134,3 @@ Store.prototype.drop = function(callback) {
   localStorage[this._dbName] = JSON.stringify({todos: []})
   callback.call(this, JSON.parse(localStorage[this._dbName]).todos)
 }
-
-// Export to window
-window.app = window.app || {}
-window.app.Store = Store

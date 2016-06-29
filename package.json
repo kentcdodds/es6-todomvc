@@ -49,7 +49,7 @@
     "dev": "webpack-dev-server --env.dev",
     "test": "karma start",
     "watch:test": "npm test -- --auto-watch --no-single-run",
-    "check-coverage": "istanbul check-coverage --statements 23 --branches 5 --functions 9 --lines 24",
+    "check-coverage": "istanbul check-coverage --statements 21 --branches 5 --functions 9 --lines 22",
     "validate": "npm-run-all --parallel lint build test --serial check-coverage",
     "lint": "eslint .",
     "setup": "npm install && npm run validate"

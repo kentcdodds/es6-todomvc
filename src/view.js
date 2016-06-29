@@ -1,6 +1,7 @@
-/*global qs, qsa, $on, $parent, $delegate */
-/* eslint no-invalid-this: 0 */
+/* eslint no-invalid-this: 0, complexity:[2, 9] */
+import {qs, qsa, $on, $parent, $delegate} from './helpers'
 
+export default View
 /**
 * View that abstracts away the browser's DOM completely.
 * It has two simple entry points:
@@ -210,7 +211,3 @@ View.prototype.bind = function(event, handler) { // eslint-disable-line
     that._bindItemEditCancel(handler)
   }
 }
-
-// Export to window
-window.app = window.app || {}
-window.app.View = View
