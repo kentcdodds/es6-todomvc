@@ -1,4 +1,4 @@
-module.exports = Model
+export default Model
 
 /**
 * Creates a new Model instance and hooks up the storage.
@@ -30,20 +30,19 @@ Model.prototype.create = function(title, callback) {
 }
 
 /**
-* Finds and returns a model in storage. If no query is given it'll simply
-* return everything. If you pass in a string or number it'll look that up as
-* the ID of the model to find. Lastly, you can pass it an object to match
-* against.
-*
-* @param {string|number|object} [query] A query to match models against
-* @param {function} [callback] The callback to fire after the model is found
-*
-* @example
-* model.read(1, func); // Will find the model with an ID of 1
-* model.read('1'); // Same as above
-* //Below will find a model with foo equalling bar and hello equalling world.
-* model.read({ foo: 'bar', hello: 'world' });
-*/
+ * Finds and returns a model in storage. If no query is given it'll simply
+ * return everything. If you pass in a string or number it'll look that up as
+ * the ID of the model to find. Lastly, you can pass it an object to match against.
+ *
+ * @param {string|number|object} [query] A query to match models against
+ * @param {function} [callback] The callback to fire after the model is found
+ *
+ * @example
+ * model.read(1, func); // Will find the model with an ID of 1
+ * model.read('1'); // Same as above
+ * //Below will find a model with foo equalling bar and hello equalling world.
+ * model.read({ foo: 'bar', hello: 'world' });
+ */
 Model.prototype.read = function(query, callback) {
   var queryType = typeof query
   callback = callback || function() {
@@ -58,6 +57,7 @@ Model.prototype.read = function(query, callback) {
   } else {
     this.storage.find(query, callback)
   }
+  return undefined
 }
 
 /**
