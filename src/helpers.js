@@ -1,4 +1,4 @@
-export {qs, qsa, log, $on, $delegate, $parent, remove, leftPad}
+export {qs, qsa, $on, $delegate, $parent, remove}
 
 // Get element(s) by CSS selector:
 function qs(selector, scope) {
@@ -7,12 +7,6 @@ function qs(selector, scope) {
 
 function qsa(selector, scope) {
   return (scope || document).querySelectorAll(selector)
-}
-
-function log(...args) {
-  if (window.console && window.console.log) {
-    window.console.log(...args)
-  }
 }
 
 // addEventListener wrapper:
@@ -60,16 +54,6 @@ function remove(array, thing) {
     return array
   }
   array.splice(index, 1)
-}
-
-// pad the left of the given string by the given size with the given character
-// leftPad('10', 3, '0') -> 010
-function leftPad(str, size, padWith) {
-  if (size <= str.length) {
-    return str
-  } else {
-    return Array(size - str.length + 1).join(padWith || '0') + str
-  }
 }
 
 // Allow for looping on nodes by chaining:
