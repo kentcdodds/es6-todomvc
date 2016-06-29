@@ -1,6 +1,6 @@
 /* eslint no-console:0 */
-var app = require('./app')
-var helpers = require('./helpers')
+import {onLoad} from './app'
+import {$on} from './helpers'
 
 // this is only relevant when using `hot` mode with webpack
 // special thanks to Eric Clemmons: https://github.com/ericclemmons/webpack-hot-server-example
@@ -11,7 +11,7 @@ if (module.hot) {
   })
   if (reloading) {
     console.log('🔁  HMR Reloading.')
-    app.onLoad()
+    onLoad()
   } else {
     console.info('✅  HMR Enabled.')
     bootstrap()
@@ -22,6 +22,6 @@ if (module.hot) {
 }
 
 function bootstrap() {
-  helpers.$on(window, 'load', app.onLoad)
-  helpers.$on(window, 'hashchange', app.onLoad)
+  $on(window, 'load', onLoad)
+  $on(window, 'hashchange', onLoad)
 }

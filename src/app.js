@@ -1,17 +1,17 @@
-require('todomvc-app-css/index.css')
+import 'todomvc-app-css/index.css'
 
-var View = require('./view')
-var helpers = require('./helpers')
-var Controller = require('./controller')
-var Model = require('./model')
-var Store = require('./store')
-var Template = require('./template')
+import View from './view'
+import {log} from './helpers'
+import Controller from './controller'
+import Model from './model'
+import Store from './store'
+import Template from './template'
 
 /**
-* Sets up a brand new Todo list.
-*
-* @param {string} name The name of your new to do list.
-*/
+ * Sets up a brand new Todo list.
+ *
+ * @param {string} name The name of your new to do list.
+ */
 function Todo(name) {
   this.storage = new Store(name)
   this.model = new Model(this.storage)
@@ -20,8 +20,8 @@ function Todo(name) {
   this.controller = new Controller(this.model, this.view)
 }
 
-module.exports.onLoad = function onLoad() {
-  var todo = new Todo('todos-vanillajs')
+export function onLoad() { // eslint-disable-line import/prefer-default-export
+  const todo = new Todo('todos-vanillajs')
   todo.controller.setView(document.location.hash)
-  helpers.log('view set')
+  log('view set')
 }
