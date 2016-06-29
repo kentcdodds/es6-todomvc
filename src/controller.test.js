@@ -1,4 +1,4 @@
-var Controller = require('./controller')
+import Controller from './controller'
 
 describe('controller', () => {
   it('exists', () => {

@@ -1,4 +1,4 @@
-module.exports = Controller
+export default Controller
 
 /**
 * Takes a model and view and acts as the controller between them
@@ -110,7 +110,7 @@ Controller.prototype.addItem = function(title) {
 Controller.prototype.editItem = function(id) {
   var that = this
   that.model.read(id, function(data) {
-    that.view.render('editItem', {id: id, title: data[0].title})
+    that.view.render('editItem', {id, title: data[0].title})
   })
 }
 
@@ -120,8 +120,8 @@ Controller.prototype.editItem = function(id) {
 Controller.prototype.editItemSave = function(id, title) {
   var that = this
   if (title.trim()) {
-    that.model.update(id, {title: title}, function() {
-      that.view.render('editItemDone', {id: id, title: title})
+    that.model.update(id, {title}, function() {
+      that.view.render('editItemDone', {id, title})
     })
   } else {
     that.removeItem(id)
@@ -134,7 +134,7 @@ Controller.prototype.editItemSave = function(id, title) {
 Controller.prototype.editItemCancel = function(id) {
   var that = this
   that.model.read(id, function(data) {
-    that.view.render('editItemDone', {id: id, title: data[0].title})
+    that.view.render('editItemDone', {id, title: data[0].title})
   })
 }
 
@@ -179,10 +179,10 @@ Controller.prototype.removeCompletedItems = function() {
 */
 Controller.prototype.toggleComplete = function(id, completed, silent) {
   var that = this
-  that.model.update(id, {completed: completed}, function() {
+  that.model.update(id, {completed}, function() {
     that.view.render('elementComplete', {
-      id: id,
-      completed: completed
+      id,
+      completed,
     })
   })
 
