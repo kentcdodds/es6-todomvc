@@ -34,6 +34,7 @@
     "karma-webpack": "1.7.0",
     "mocha": "2.5.3",
     "npm-run-all": "2.3.0",
+    "offline-plugin": "3.4.2",
     "opt-cli": "1.5.1",
     "rimraf": "2.5.3",
     "style-loader": "0.13.1",
