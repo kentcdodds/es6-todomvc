@@ -28,6 +28,10 @@ module.exports = env => {
       ifProd(new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
       })),
+      ifProd(new webpack.optimize.CommonsChunkPlugin({
+        minChunks: Infinity,
+        name: 'inline',
+      })),
       new HtmlWebpackPlugin({
         template: './index.html',
         inject: 'head',
