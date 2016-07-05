@@ -7,6 +7,7 @@ const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const webpackValidator = require('webpack-validator')
 const {getIfUtils, removeEmpty} = require('webpack-config-utils')
+const OfflinePlugin = require('offline-plugin')
 
 module.exports = env => {
   const {ifProd, ifNotProd} = getIfUtils(env)
@@ -44,6 +45,12 @@ module.exports = env => {
       new HtmlWebpackPlugin({
         template: './index.html',
         inject: 'head',
+      }),
+      new OfflinePlugin(),
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: ifProd('"production"', '"development"')
+        }
       }),
     ]),
   })
