@@ -24,6 +24,7 @@ module.exports = env => {
         {test: /\.css$/, loaders: ['style', 'css']},
       ],
     },
+    recordsPath: resolve(__dirname, './webpack-records.json'),
     plugins: removeEmpty([
       ifProd(new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
