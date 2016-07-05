@@ -1,18 +1,22 @@
 /* eslint no-console:"off" */
 const {resolve} = require('path')
+const webpack = require('webpack')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpackValidator = require('webpack-validator')
-const {getIfUtils} = require('webpack-config-utils')
+const {getIfUtils, removeEmpty} = require('webpack-config-utils')
 
 module.exports = env => {
   const {ifProd, ifNotProd} = getIfUtils(env)
   const config = webpackValidator({
     context: resolve('src'),
-    entry: './bootstrap.js',
+    entry: {
+      app: './bootstrap.js',
+      vendor: ['todomvc-app-css/index.css'],
+    },
     output: {
-      filename: 'bundle.js',
+      filename: ifProd('bundle.[name].[chunkhash].js', 'bundle.[name].js'),
       path: resolve('dist'),
-      publicPath: '/dist/',
       pathinfo: ifNotProd(),
     },
     devtool: ifProd('source-map', 'eval'),
@@ -22,9 +26,16 @@ module.exports = env => {
         {test: /\.css$/, loaders: ['style', 'css']},
       ],
     },
-    plugins: [
-      new ProgressBarPlugin()
-    ],
+    plugins: removeEmpty([
+      new ProgressBarPlugin(),
+      ifProd(new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+      })),
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        inject: 'head',
+      }),
+    ]),
   })
   if (env.debug) {
     console.log(config)
