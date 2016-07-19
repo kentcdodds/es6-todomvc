@@ -1,5 +1,0 @@
-node_modules
-coverage/
-dist
-.opt-in
-webpack-records.json
