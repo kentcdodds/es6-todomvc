@@ -1,6 +1,11 @@
 {
   "private": true,
   "dependencies": {
+    "d3": "3.5.17",
+    "rd3": "0.6.4",
+    "react": "15.2.1",
+    "react-dom": "15.2.1",
+    "lodash": "4.13.1",
     "todomvc-app-css": "2.0.6",
     "todomvc-common": "1.0.2"
   },
@@ -10,6 +15,7 @@
     "babel-plugin-__coverage__": "11.0.0",
     "babel-preset-es2015-webpack": "6.4.1",
     "babel-preset-es2016": "6.11.0",
+    "babel-preset-react": "6.11.1",
     "babel-preset-stage-2": "6.11.0",
     "chai": "3.5.0",
     "cpy-cli": "1.0.1",
@@ -49,7 +55,7 @@
     "dev": "webpack-dev-server --env.dev",
     "test": "karma start",
     "watch:test": "npm test -- --auto-watch --no-single-run",
-    "check-coverage": "istanbul check-coverage --statements 21 --branches 5 --functions 9 --lines 22",
+    "check-coverage": "istanbul check-coverage --statements 11 --branches 0 --functions 0 --lines 12",
     "validate": "npm-run-all --parallel lint build test --serial check-coverage",
     "lint": "eslint .",
     "setup": "npm install && npm run validate"

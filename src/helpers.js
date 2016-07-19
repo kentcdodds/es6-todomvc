@@ -1,4 +1,4 @@
-export {qs, qsa, $on, $delegate, $parent, log}
+export {qs, qsa, $on, $delegate, $parent, log, remove}
 
 // Get element(s) by CSS selector:
 function qs(selector, scope) {
@@ -47,6 +47,14 @@ function $parent(element, tagName) {
     return element.parentNode
   }
   return $parent(element.parentNode, tagName)
+}
+
+function remove(array, thing) {
+  const index = array.indexOf(thing)
+  if (index === -1) {
+    return array
+  }
+  array.splice(index, 1)
 }
 
 // Allow for looping on nodes by chaining:

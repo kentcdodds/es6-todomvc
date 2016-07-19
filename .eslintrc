@@ -1,5 +1,5 @@
 {
-  "extends": ["kentcdodds", "kentcdodds/mocha", "kentcdodds/webpack"],
+  "extends": ["kentcdodds", "kentcdodds/mocha", "kentcdodds/webpack", "kentcdodds/react"],
   "rules": {
     // these are only here because I did not
     // want to update the entire codebase ¯\_(ツ)_/¯
