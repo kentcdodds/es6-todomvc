@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This was originally part of [an ES6 training](bit.ly/es6-intro-slides) by [Kent C. Dodds](https://twitter.com/kentcdodds)
+This was originally part of [an ES6 training](http://bit.ly/es6-intro-slides) by [Kent C. Dodds](https://twitter.com/kentcdodds)
 
 Now I'm using it to teach people about [Webpack](http://webpack.github.io/).
 
