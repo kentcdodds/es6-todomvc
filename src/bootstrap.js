@@ -1,8 +1,7 @@
-/* global app, $on */
 'use strict'
 
-require('./app')
-require('./helpers')
+var app = require('./app')
+var helpers = require('./helpers')
 
-$on(window, 'load', app.onLoad)
-$on(window, 'hashchange', app.onLoad)
+helpers.$on(window, 'load', app.onLoad)
+helpers.$on(window, 'hashchange', app.onLoad)
