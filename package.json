@@ -4,6 +4,11 @@
     "todomvc-app-css": "2.0.6"
   },
   "devDependencies": {
+    "babel-core": "6.13.2",
+    "babel-loader": "6.2.4",
+    "babel-preset-es2015": "6.13.2",
+    "babel-preset-es2016": "6.11.3",
+    "babel-preset-stage-2": "6.13.0",
     "eslint": "3.2.2",
     "eslint-config-kentcdodds": "^9.0.0",
     "ghooks": "1.3.2",

@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = {qs, qsa, log, $on, $delegate, $parent, remove, leftPad}
 
 // Get element(s) by CSS selector:
