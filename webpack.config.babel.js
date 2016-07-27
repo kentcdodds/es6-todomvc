@@ -1,5 +1,6 @@
 /* eslint no-console:"off" */
 const {resolve} = require('path')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const webpackValidator = require('webpack-validator')
 const {getIfUtils} = require('webpack-config-utils')
 
@@ -21,6 +22,9 @@ module.exports = env => {
         {test: /\.css$/, loaders: ['style', 'css']},
       ],
     },
+    plugins: [
+      new ProgressBarPlugin()
+    ],
   })
   if (env.debug) {
     console.log(config)
