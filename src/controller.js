@@ -250,6 +250,7 @@ Controller.prototype._filter = function(force) {
 Controller.prototype._updateFilterState = function(currentPage) {
   // Store a reference to the active route, allowing us to re-filter todo
   // items as they are marked complete or incomplete.
+  currentPage = currentPage.split('?')[0]
   this._activeRoute = currentPage
 
   if (currentPage === '') {
