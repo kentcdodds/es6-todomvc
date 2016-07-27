@@ -1,5 +1,3 @@
-'use strict'
-
 var app = require('./app')
 var helpers = require('./helpers')
 

@@ -1,15 +1,4 @@
-'use strict'
-
-module.exports = {
-  qs: qs,
-  qsa: qsa,
-  log: log,
-  $on: $on,
-  $delegate: $delegate,
-  $parent: $parent,
-  remove: remove,
-  leftPad: leftPad,
-}
+module.exports = {qs, qsa, log, $on, $delegate, $parent, remove, leftPad}
 
 // Get element(s) by CSS selector:
 function qs(selector, scope) {

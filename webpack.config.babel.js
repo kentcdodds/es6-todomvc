@@ -15,6 +15,11 @@ module.exports = env => {
       pathinfo: ifNotProd(),
     },
     devtool: ifProd('source-map', 'eval'),
+    module: {
+      loaders: [
+        {test: /\.js$/, loaders: ['babel'], exclude: /node_modules/},
+      ],
+    },
   })
   if (env.debug) {
     console.log(config)

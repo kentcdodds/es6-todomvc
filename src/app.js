@@ -1,5 +1,3 @@
-'use strict'
-
 var View = require('./view')
 var helpers = require('./helpers')
 var Controller = require('./controller')
