@@ -1,6 +1,14 @@
-/*global qs, qsa, $on, $parent, $delegate */
 /* eslint no-invalid-this: 0 */
 'use strict'
+
+var helpers = require('./helpers')
+var qs = helpers.qs
+var qsa = helpers.qsa
+var $on = helpers.$on
+var $parent = helpers.$parent
+var $delegate = helpers.$delegate
+
+module.exports = View
 
 /**
 * View that abstracts away the browser's DOM completely.
@@ -211,7 +219,3 @@ View.prototype.bind = function(event, handler) { // eslint-disable-line
     that._bindItemEditCancel(handler)
   }
 }
-
-// Export to window
-window.app = window.app || {}
-window.app.View = View
