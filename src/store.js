@@ -1,3 +1,4 @@
+import {remove} from './helpers'
 export default Store
 
 /**
@@ -23,6 +24,16 @@ function Store(name, callback) {
   }
 
   callback.call(this, JSON.parse(localStorage[name]))
+  this.subscribers = []
+}
+
+Store.prototype.subscribe = function(subscriber) {
+  this.subscribers.push(subscriber)
+  return () => remove(this.subscribers, subscriber)
+}
+
+Store.prototype._notify = function() {
+  this.subscribers.forEach(s => s())
 }
 
 /**
@@ -102,6 +113,7 @@ Store.prototype.save = function(updateData, callback, id) {
     localStorage[this._dbName] = JSON.stringify(data)
     callback.call(this, [updateData])
   }
+  this._notify()
 }
 
 /**
@@ -123,6 +135,7 @@ Store.prototype.remove = function(id, callback) {
 
   localStorage[this._dbName] = JSON.stringify(data)
   callback.call(this, JSON.parse(localStorage[this._dbName]).todos)
+  this._notify()
 }
 
 /**
@@ -133,4 +146,5 @@ Store.prototype.remove = function(id, callback) {
 Store.prototype.drop = function(callback) {
   localStorage[this._dbName] = JSON.stringify({todos: []})
   callback.call(this, JSON.parse(localStorage[this._dbName]).todos)
+  this._notify()
 }
