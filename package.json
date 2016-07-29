@@ -60,6 +60,6 @@
     "build:prod": "webpack --env.prod -p",
     "lint": "eslint .",
     "setup": "npm install && npm run validate",
-    "setup:fem": "git checkout FEM/07.1-gzip && npm install && npm run validate && rimraf webpack-records.json dist coverage && git checkout FEM/00-original-project"
+    "setup:fem": "git checkout FEM/07.1-deploy-surge && npm install && npm run validate && rimraf webpack-records.json dist coverage && git checkout FEM/00-original-project"
   }
 }
