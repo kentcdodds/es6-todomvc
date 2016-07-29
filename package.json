@@ -39,6 +39,7 @@
     "progress-bar-webpack-plugin": "1.9.0",
     "rimraf": "2.5.4",
     "style-loader": "0.13.1",
+    "surge": "0.18.0",
     "webpack": "2.1.0-beta.20",
     "webpack-config-utils": "2.0.0",
     "webpack-dev-server": "2.1.0-beta.0",
@@ -50,6 +51,8 @@
     }
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "./scripts/deploy",
     "prebuild": "rimraf dist",
     "build": "webpack --env.prod -p",
     "postbuild": "cpy favicon.ico dist",
