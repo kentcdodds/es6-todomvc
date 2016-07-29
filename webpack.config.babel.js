@@ -3,6 +3,7 @@ const {resolve} = require('path')
 const webpack = require('webpack')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const webpackValidator = require('webpack-validator')
 const {getIfUtils, removeEmpty} = require('webpack-config-utils')
 
@@ -28,8 +29,9 @@ module.exports = env => {
     },
     plugins: removeEmpty([
       new ProgressBarPlugin(),
+      ifProd(new InlineManifestWebpackPlugin()),
       ifProd(new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
+        names: ['vendor', 'manifest'],
       })),
       new HtmlWebpackPlugin({
         template: './index.html',

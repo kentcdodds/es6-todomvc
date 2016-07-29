@@ -24,6 +24,7 @@
     "ghooks": "1.3.2",
     "html-webpack-plugin": "2.22.0",
     "http-server": "0.9.0",
+    "inline-manifest-webpack-plugin": "3.0.1",
     "karma": "1.1.2",
     "karma-chai": "0.1.0",
     "karma-chrome-launcher": "1.0.1",
