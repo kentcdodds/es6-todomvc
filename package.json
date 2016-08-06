@@ -16,6 +16,9 @@
     "webpack-dev-server": "2.1.0-beta.0",
     "webpack-validator": "2.2.7"
   },
+  "optionalDependencies": {
+    "node-nightly": "1.4.2"
+  },
   "config": {
     "ghooks": {
       "pre-commit": "opt --in pre-commit --exec \"npm run validate\""
@@ -28,6 +31,9 @@
     "build:dev": "webpack --env.dev",
     "start": "http-server",
     "dev": "webpack-dev-server --env.dev",
+    "debug": "node-nightly --inspect --debug-brk node_modules/.bin/webpack --env.debug",
+    "debug:dev": "npm run debug -- --env.dev",
+    "debug:prod": "npm run debug -- --env.prod",
     "validate": "npm-run-all --parallel lint build",
     "lint": "eslint ."
   }

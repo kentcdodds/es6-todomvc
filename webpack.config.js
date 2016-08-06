@@ -1,10 +1,11 @@
+/* eslint no-console:"off" */
 const {resolve} = require('path')
 const webpackValidator = require('webpack-validator')
 const {getIfUtils} = require('webpack-config-utils')
 
 module.exports = env => {
   const {ifProd} = getIfUtils(env)
-  return webpackValidator({
+  const config = webpackValidator({
     context: resolve('src'),
     entry: './bootstrap.js',
     output: {
@@ -14,4 +15,9 @@ module.exports = env => {
     },
     devtool: ifProd('source-map', 'eval'),
   })
+  if (env.debug) {
+    console.log(config)
+    debugger // eslint-disable-line
+  }
+  return config
 }
