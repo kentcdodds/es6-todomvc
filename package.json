@@ -28,6 +28,9 @@
     "build:dev": "webpack --env.dev",
     "start": "http-server",
     "dev": "webpack-dev-server --env.dev",
+    "debug": "node-nightly --inspect --debug-brk node_modules/.bin/webpack --env.debug",
+    "debug:dev": "npm run debug -- --env.dev",
+    "debug:prod": "npm run debug -- --env.prod",
     "validate": "npm-run-all --parallel lint build",
     "lint": "eslint ."
   }
