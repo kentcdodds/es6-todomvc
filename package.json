@@ -33,6 +33,7 @@
     "karma-mocha": "1.1.1",
     "karma-webpack": "1.7.0",
     "mocha": "3.0.1",
+    "node-nightly": "git+https://github.com/kentcdodds/node-nightly.git#pr/fix-windows",
     "npm-run-all": "2.3.0",
     "offline-plugin": "3.4.2",
     "opt-cli": "1.5.1",
@@ -44,9 +45,6 @@
     "webpack-config-utils": "2.0.0",
     "webpack-dev-server": "2.1.0-beta.0",
     "webpack-validator": "2.2.7"
-  },
-  "optionalDependencies": {
-    "node-nightly": "1.4.2"
   },
   "config": {
     "ghooks": {
