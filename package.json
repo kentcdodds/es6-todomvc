@@ -6,7 +6,7 @@
   },
   "devDependencies": {
     "babel": "6.5.2",
-    "babel-core": "6.9.1",
+    "babel-core": "6.13.2",
     "babel-eslint": "6.0.4",
     "babel-loader": "6.2.4",
     "babel-plugin-__coverage__": "11.0.0",
