@@ -1,5 +1,11 @@
 {
-  "extends": ["kentcdodds/react"],
+  "extends": [
+    "kentcdodds/es6/best-practices",
+    "kentcdodds/best-practices",
+    "kentcdodds/es6/possible-errors",
+    "kentcdodds/possible-errors",
+    "kentcdodds/react"
+  ],
   "rules": {
     // these are only here because I did not
     // want to update the entire codebase ¯\_(ツ)_/¯
@@ -11,6 +17,7 @@
     "vars-on-top": 0,
     "complexity": [2, 6],
     "react/jsx-uses-react": 2,
+    "prefer-template": 0,
   },
   "globals": {
     "jasmine": false,
