@@ -1,5 +1,10 @@
 {
-  "extends": ["kentcdodds/es-next"],
+  "extends": [
+    "kentcdodds/es6/best-practices",
+    "kentcdodds/best-practices",
+    "kentcdodds/es6/possible-errors",
+    "kentcdodds/possible-errors",
+  ],
   "rules": {
     // these are only here because I did not
     // want to update the entire codebase ¯\_(ツ)_/¯
@@ -10,6 +15,7 @@
     "valid-jsdoc": 0,
     "vars-on-top": 0,
     "complexity": [2, 6],
+    "prefer-template": 0,
   },
   "globals": {
     "jasmine": false,
