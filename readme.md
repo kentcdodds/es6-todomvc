@@ -4,8 +4,8 @@
 
 [![MIT License][license-badge]][LICENSE]
 [![Donate][donate-badge]][donate]
-![Star on GitHub][github-star-badge]
-![Tweet][twitter-badge]
+[![Star on GitHub][github-star-badge]]()
+[![Tweet][twitter-badge]]()
 
 ## Purpose
 
