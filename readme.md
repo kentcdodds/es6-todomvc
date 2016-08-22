@@ -90,7 +90,7 @@ Thanks!
 MIT
 
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
-[license]: https://github.com/kentcdodds/p-s/blob/master/LICENSE
+[license]: https://github.com/kentcdodds/es6-todomvc#license
 [donate-badge]: https://img.shields.io/badge/%EF%BC%84-support-green.svg?style=flat-square
 [donate]: http://kcd.im/donate
 [github-star-badge]: https://img.shields.io/github/stars/kentcdodds/es6-todomvc.svg?style=social&label=Star
