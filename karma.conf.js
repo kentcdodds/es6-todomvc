@@ -1,3 +1,4 @@
+process.env.NODE_ENV = 'test'
 const webpackConfig = require('./webpack.config')
 require('babel-register')
 
