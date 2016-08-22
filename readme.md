@@ -1,4 +1,6 @@
-# Vanilla JavaScript TodoMVC Example
+# Webpack Workshop
+
+> Using the Vanilla JavaScript TodoMVC Example
 
 [![MIT License][license-badge]][LICENSE]
 [![Donate][donate-badge]][donate]
