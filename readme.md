@@ -4,8 +4,8 @@
 
 [![MIT License][license-badge]][LICENSE]
 [![Donate][donate-badge]][donate]
-[![Star on GitHub][github-star-badge]]()
-[![Tweet][twitter-badge]]()
+[![Star on GitHub][github-star-badge]][github-star]
+[![Tweet][twitter-badge]][twitter]
 
 ## Purpose
 
@@ -94,4 +94,6 @@ MIT
 [donate-badge]: https://img.shields.io/badge/%EF%BC%84-support-green.svg?style=flat-square
 [donate]: http://kcd.im/donate
 [github-star-badge]: https://img.shields.io/github/stars/kentcdodds/es6-todomvc.svg?style=social&label=Star
+[github-star]: https://github.com/kentcdodds/es6-todomvc/stargazers
+[twitter]: https://twitter.com/intent/tweet?text=Check%20out%20this%20fantastic%20webpack%20workshop!%20http://kcd.im/webpack-workshop-repo%20%F0%9F%98%8E
 [twitter-badge]: https://img.shields.io/twitter/url/https/kcd.im/webpack-workshop-repo.svg?style=social
