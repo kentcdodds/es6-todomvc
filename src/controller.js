@@ -8,40 +8,39 @@ export default Controller
 * @param {object} view The view instance
 */
 function Controller(model, view) {
-  var that = this
-  that.model = model
-  that.view = view
+  this.model = model
+  this.view = view
 
-  that.view.bind('newTodo', function(title) {
-    that.addItem(title)
+  this.view.bind('newTodo', (title) => {
+    this.addItem(title)
   })
 
-  that.view.bind('itemEdit', function(item) {
-    that.editItem(item.id)
+  this.view.bind('itemEdit', (item) => {
+    this.editItem(item.id)
   })
 
-  that.view.bind('itemEditDone', function(item) {
-    that.editItemSave(item.id, item.title)
+  this.view.bind('itemEditDone', (item) => {
+    this.editItemSave(item.id, item.title)
   })
 
-  that.view.bind('itemEditCancel', function(item) {
-    that.editItemCancel(item.id)
+  this.view.bind('itemEditCancel', (item) => {
+    this.editItemCancel(item.id)
   })
 
-  that.view.bind('itemRemove', function(item) {
-    that.removeItem(item.id)
+  this.view.bind('itemRemove', (item) => {
+    this.removeItem(item.id)
   })
 
-  that.view.bind('itemToggle', function(item) {
-    that.toggleComplete(item.id, item.completed)
+  this.view.bind('itemToggle', (item) => {
+    this.toggleComplete(item.id, item.completed)
   })
 
-  that.view.bind('removeCompleted', function() {
-    that.removeCompletedItems()
+  this.view.bind('removeCompleted', (item) => {
+    this.removeCompletedItems()
   })
 
-  that.view.bind('toggleAll', function(status) {
-    that.toggleAll(status.completed)
+  this.view.bind('toggleAll', (item) => {
+    this.toggleAll(status.completed)
   })
 }
 
@@ -61,9 +60,8 @@ Controller.prototype.setView = function(locationHash) {
 * todo-list
 */
 Controller.prototype.showAll = function() {
-  var that = this
-  that.model.read(function(data) {
-    that.view.render('showEntries', data)
+  this.model.read((data) => {
+    this.view.render('showEntries', data)
   })
 }
 
@@ -71,9 +69,8 @@ Controller.prototype.showAll = function() {
 * Renders all active tasks
 */
 Controller.prototype.showActive = function() {
-  var that = this
-  that.model.read({completed: false}, function(data) {
-    that.view.render('showEntries', data)
+  this.model.read({completed: false}, (data) => {
+    this.view.render('showEntries', data)
   })
 }
 
@@ -81,9 +78,8 @@ Controller.prototype.showActive = function() {
 * Renders all completed tasks
 */
 Controller.prototype.showCompleted = function() {
-  var that = this
-  that.model.read({completed: true}, function(data) {
-    that.view.render('showEntries', data)
+  this.model.read({completed: true}, (data) => {
+    this.view.render('showEntries', data)
   })
 }
 
@@ -92,15 +88,14 @@ Controller.prototype.showCompleted = function() {
 * object and it'll handle the DOM insertion and saving of the new item.
 */
 Controller.prototype.addItem = function(title) {
-  var that = this
 
   if (title.trim() === '') {
     return
   }
 
-  that.model.create(title, function() {
-    that.view.render('clearNewTodo')
-    that._filter(true)
+  this.model.create(title, () => {
+    this.view.render('clearNewTodo')
+    this._filter(true)
   })
 }
 
@@ -108,9 +103,8 @@ Controller.prototype.addItem = function(title) {
 * Triggers the item editing mode.
 */
 Controller.prototype.editItem = function(id) {
-  var that = this
-  that.model.read(id, function(data) {
-    that.view.render('editItem', {id, title: data[0].title})
+  this.model.read(id, (data) => {
+    this.view.render('editItem', {id, title: data[0].title})
   })
 }
 
@@ -118,13 +112,12 @@ Controller.prototype.editItem = function(id) {
 * Finishes the item editing mode successfully.
 */
 Controller.prototype.editItemSave = function(id, title) {
-  var that = this
   if (title.trim()) {
-    that.model.update(id, {title}, function() {
-      that.view.render('editItemDone', {id, title})
+    this.model.update(id, {title}, () => {
+      this.view.render('editItemDone', {id, title})
     })
   } else {
-    that.removeItem(id)
+    this.removeItem(id)
   }
 }
 
@@ -132,40 +125,39 @@ Controller.prototype.editItemSave = function(id, title) {
 * Cancels the item editing mode.
 */
 Controller.prototype.editItemCancel = function(id) {
-  var that = this
-  that.model.read(id, function(data) {
-    that.view.render('editItemDone', {id, title: data[0].title})
+  this.model.read(id, (data) => {
+    this.view.render('editItemDone', {id, title: data[0].title})
   })
 }
 
 /**
-* By giving it an ID it'll find the DOM element matching that ID,
+* By giving it an ID it'll find the DOM element matching this ID,
 * remove it from the DOM and also remove it from storage.
 *
 * @param {number} id The ID of the item to remove from the DOM and
 * storage
 */
 Controller.prototype.removeItem = function(id) {
-  var that = this
-  that.model.remove(id, function() {
-    that.view.render('removeItem', id)
+  
+  this.model.remove(id, () => {
+    this.view.render('removeItem', id)
   })
 
-  that._filter()
+  this._filter()
 }
 
 /**
 * Will remove all completed items from the DOM and storage.
 */
 Controller.prototype.removeCompletedItems = function() {
-  var that = this
-  that.model.read({completed: true}, function(data) {
-    data.forEach(function(item) {
-      that.removeItem(item.id)
+  
+  this.model.read({completed: true}, function(data) {
+    data.forEach((item) => {
+      this.removeItem(item.id)
     })
   })
 
-  that._filter()
+  this._filter()
 }
 
 /**
@@ -178,16 +170,16 @@ Controller.prototype.removeCompletedItems = function() {
 * @param {boolean|undefined} silent Prevent re-filtering the todo items
 */
 Controller.prototype.toggleComplete = function(id, completed, silent) {
-  var that = this
-  that.model.update(id, {completed}, function() {
-    that.view.render('elementComplete', {
+  
+  this.model.update(id, {completed}, () => {
+    this.view.render('elementComplete', {
       id,
       completed,
     })
   })
 
   if (!silent) {
-    that._filter()
+    this._filter()
   }
 }
 
@@ -196,14 +188,13 @@ Controller.prototype.toggleComplete = function(id, completed, silent) {
 * Just pass in the event object.
 */
 Controller.prototype.toggleAll = function(completed) {
-  var that = this
-  that.model.read({completed: !completed}, function(data) {
-    data.forEach(function(item) {
-      that.toggleComplete(item.id, completed, true)
+  this.model.read({completed: !completed}, (data) => {
+    data.forEach((item) => {
+      this.toggleComplete(item.id, completed, true)
     })
   })
 
-  that._filter()
+  this._filter()
 }
 
 /**
@@ -211,16 +202,15 @@ Controller.prototype.toggleAll = function(completed) {
 * number of todos.
 */
 Controller.prototype._updateCount = function() {
-  var that = this
-  that.model.getCount(function(todos) {
-    that.view.render('updateElementCount', todos.active)
-    that.view.render('clearCompletedButton', {
+  this.model.getCount((todos) => {
+    this.view.render('updateElementCount', todos.active)
+    this.view.render('clearCompletedButton', {
       completed: todos.completed,
       visible: todos.completed > 0
     })
 
-    that.view.render('toggleAll', {checked: todos.completed === todos.total})
-    that.view.render('contentBlockVisibility', {visible: todos.total > 0})
+    this.view.render('toggleAll', {checked: todos.completed === todos.total})
+    this.view.render('contentBlockVisibility', {visible: todos.total > 0})
   })
 }
 
