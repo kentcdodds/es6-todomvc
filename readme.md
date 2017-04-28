@@ -63,6 +63,8 @@ You might find it helpful to see a list of the available branches. Run: `git bra
 
 Because Webpack 2 is currently in beta, there are issues with `peerDependencies`, so you’ll have to use npm version 3 to be able to install the dependencies.
 
+Running Webpack with `webpack -p` is not showing the warnings about the dead code elimination anymore. However, it is working as expected.
+
 ### Updates
 
 The ecosystem moves fast. So this section of the README will be dedicated to tracking changes in the ecosystem so you
