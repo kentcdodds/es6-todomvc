@@ -7,7 +7,7 @@ import {$on} from './helpers'
 // special thanks to Eric Clemmons: https://github.com/ericclemmons/webpack-hot-server-example
 const reloading = document.readyState === 'complete'
 if (module.hot) {
-  module.hot.accept(function(err) {
+  module.hot.accept(err => {
     console.log('❌  HMR Error:', err)
   })
   if (reloading) {
