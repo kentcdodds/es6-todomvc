@@ -51,7 +51,7 @@ export default class View {
 
     listItem.className = listItem.className.replace('editing', '')
 
-    qsa('label', listItem).forEach(function(label) {
+    qsa('label', listItem).forEach(label => {
       label.textContent = title
     })
   }
@@ -59,37 +59,37 @@ export default class View {
   render(viewCmd, parameter) {
     var that = this
     var viewCommands = {
-      showEntries: function() {
+      showEntries() {
         that.$todoList.innerHTML = that.template.show(parameter)
       },
-      removeItem: function() {
+      removeItem() {
         that._removeItem(parameter)
       },
-      updateElementCount: function() {
+      updateElementCount() {
         that.$todoItemCounter.innerHTML = that.template.itemCounter(parameter)
       },
-      clearCompletedButton: function() {
+      clearCompletedButton() {
         that._clearCompletedButton(parameter.completed, parameter.visible)
       },
-      contentBlockVisibility: function() {
+      contentBlockVisibility() {
         that.$main.style.display = that.$footer.style.display = parameter.visible ? 'block' : 'none'
       },
-      toggleAll: function() {
+      toggleAll() {
         that.$toggleAll.checked = parameter.checked
       },
-      setFilter: function() {
+      setFilter() {
         _setFilter(parameter)
       },
-      clearNewTodo: function() {
+      clearNewTodo() {
         that.$newTodo.value = ''
       },
-      elementComplete: function() {
+      elementComplete() {
         _elementComplete(parameter.id, parameter.completed)
       },
-      editItem: function() {
+      editItem() {
         _editItem(parameter.id, parameter.title)
       },
-      editItemDone: function() {
+      editItemDone() {
         that._editItemDone(parameter.id, parameter.title)
       }
     }
@@ -132,12 +132,12 @@ export default class View {
   bind(event, handler) {
     var that = this
     if (event === 'newTodo') {
-      $on(that.$newTodo, 'change', function() {
+      $on(that.$newTodo, 'change', () => {
         handler(that.$newTodo.value)
       })
 
     } else if (event === 'removeCompleted') {
-      $on(that.$clearCompleted, 'click', function() {
+      $on(that.$clearCompleted, 'click', () => {
         handler()
       })
 

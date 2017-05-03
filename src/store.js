@@ -10,8 +10,8 @@ export default Store
  * real life you probably would be making AJAX calls
  */
 function Store(name, callback) {
-  callback = callback || function() {
-  }
+  callback = callback || (() => {
+  })
 
   this._dbName = name
 
@@ -56,7 +56,7 @@ Store.prototype.find = function(query, callback) {
 
   var todos = JSON.parse(localStorage[this._dbName]).todos
 
-  callback.call(this, todos.filter(function(todo) {
+  callback.call(this, todos.filter(todo => {
     for (var q in query) {
       if (query[q] !== todo[q]) {
         return false
@@ -72,8 +72,8 @@ Store.prototype.find = function(query, callback) {
 * @param {function} callback The callback to fire upon retrieving data
 */
 Store.prototype.findAll = function(callback) {
-  callback = callback || function() {
-  }
+  callback = callback || (() => {
+  })
   callback.call(this, JSON.parse(localStorage[this._dbName]).todos)
 }
 
@@ -89,8 +89,8 @@ Store.prototype.save = function(updateData, callback, id) {
   var data = JSON.parse(localStorage[this._dbName])
   var todos = data.todos
 
-  callback = callback || function() {
-  }
+  callback = callback || (() => {
+  })
 
   // If an ID was actually given, find the item and update each property
   if (id) {

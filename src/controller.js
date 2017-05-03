@@ -12,35 +12,35 @@ function Controller(model, view) {
   that.model = model
   that.view = view
 
-  that.view.bind('newTodo', function(title) {
+  that.view.bind('newTodo', title => {
     that.addItem(title)
   })
 
-  that.view.bind('itemEdit', function(item) {
+  that.view.bind('itemEdit', item => {
     that.editItem(item.id)
   })
 
-  that.view.bind('itemEditDone', function(item) {
+  that.view.bind('itemEditDone', item => {
     that.editItemSave(item.id, item.title)
   })
 
-  that.view.bind('itemEditCancel', function(item) {
+  that.view.bind('itemEditCancel', item => {
     that.editItemCancel(item.id)
   })
 
-  that.view.bind('itemRemove', function(item) {
+  that.view.bind('itemRemove', item => {
     that.removeItem(item.id)
   })
 
-  that.view.bind('itemToggle', function(item) {
+  that.view.bind('itemToggle', item => {
     that.toggleComplete(item.id, item.completed)
   })
 
-  that.view.bind('removeCompleted', function() {
+  that.view.bind('removeCompleted', () => {
     that.removeCompletedItems()
   })
 
-  that.view.bind('toggleAll', function(status) {
+  that.view.bind('toggleAll', status => {
     that.toggleAll(status.completed)
   })
 }
@@ -62,7 +62,7 @@ Controller.prototype.setView = function(locationHash) {
 */
 Controller.prototype.showAll = function() {
   var that = this
-  that.model.read(function(data) {
+  that.model.read(data => {
     that.view.render('showEntries', data)
   })
 }
@@ -72,7 +72,7 @@ Controller.prototype.showAll = function() {
 */
 Controller.prototype.showActive = function() {
   var that = this
-  that.model.read({completed: false}, function(data) {
+  that.model.read({completed: false}, data => {
     that.view.render('showEntries', data)
   })
 }
@@ -82,7 +82,7 @@ Controller.prototype.showActive = function() {
 */
 Controller.prototype.showCompleted = function() {
   var that = this
-  that.model.read({completed: true}, function(data) {
+  that.model.read({completed: true}, data => {
     that.view.render('showEntries', data)
   })
 }
@@ -98,7 +98,7 @@ Controller.prototype.addItem = function(title) {
     return
   }
 
-  that.model.create(title, function() {
+  that.model.create(title, () => {
     that.view.render('clearNewTodo')
     that._filter(true)
   })
@@ -109,7 +109,7 @@ Controller.prototype.addItem = function(title) {
 */
 Controller.prototype.editItem = function(id) {
   var that = this
-  that.model.read(id, function(data) {
+  that.model.read(id, data => {
     that.view.render('editItem', {id, title: data[0].title})
   })
 }
@@ -120,7 +120,7 @@ Controller.prototype.editItem = function(id) {
 Controller.prototype.editItemSave = function(id, title) {
   var that = this
   if (title.trim()) {
-    that.model.update(id, {title}, function() {
+    that.model.update(id, {title}, () => {
       that.view.render('editItemDone', {id, title})
     })
   } else {
@@ -133,7 +133,7 @@ Controller.prototype.editItemSave = function(id, title) {
 */
 Controller.prototype.editItemCancel = function(id) {
   var that = this
-  that.model.read(id, function(data) {
+  that.model.read(id, data => {
     that.view.render('editItemDone', {id, title: data[0].title})
   })
 }
@@ -147,7 +147,7 @@ Controller.prototype.editItemCancel = function(id) {
 */
 Controller.prototype.removeItem = function(id) {
   var that = this
-  that.model.remove(id, function() {
+  that.model.remove(id, () => {
     that.view.render('removeItem', id)
   })
 
@@ -159,8 +159,8 @@ Controller.prototype.removeItem = function(id) {
 */
 Controller.prototype.removeCompletedItems = function() {
   var that = this
-  that.model.read({completed: true}, function(data) {
-    data.forEach(function(item) {
+  that.model.read({completed: true}, data => {
+    data.forEach(item => {
       that.removeItem(item.id)
     })
   })
@@ -179,7 +179,7 @@ Controller.prototype.removeCompletedItems = function() {
 */
 Controller.prototype.toggleComplete = function(id, completed, silent) {
   var that = this
-  that.model.update(id, {completed}, function() {
+  that.model.update(id, {completed}, () => {
     that.view.render('elementComplete', {
       id,
       completed,
@@ -197,8 +197,8 @@ Controller.prototype.toggleComplete = function(id, completed, silent) {
 */
 Controller.prototype.toggleAll = function(completed) {
   var that = this
-  that.model.read({completed: !completed}, function(data) {
-    data.forEach(function(item) {
+  that.model.read({completed: !completed}, data => {
+    data.forEach(item => {
       that.toggleComplete(item.id, completed, true)
     })
   })
@@ -212,7 +212,7 @@ Controller.prototype.toggleAll = function(completed) {
 */
 Controller.prototype._updateCount = function() {
   var that = this
-  that.model.getCount(function(todos) {
+  that.model.getCount(todos => {
     that.view.render('updateElementCount', todos.active)
     that.view.render('clearCompletedButton', {
       completed: todos.completed,

@@ -18,8 +18,8 @@ function Model(storage) {
 */
 Model.prototype.create = function(title, callback) {
   title = title || ''
-  callback = callback || function() {
-  }
+  callback = callback || (() => {
+  })
 
   var newItem = {
     title: title.trim(),
@@ -45,8 +45,8 @@ Model.prototype.create = function(title, callback) {
  */
 Model.prototype.read = function(query, callback) {
   var queryType = typeof query
-  callback = callback || function() {
-  }
+  callback = callback || (() => {
+  })
 
   if (queryType === 'function') {
     callback = query
@@ -101,8 +101,8 @@ Model.prototype.getCount = function(callback) {
     total: 0
   }
 
-  this.storage.findAll(function(data) {
-    data.forEach(function(todo) {
+  this.storage.findAll(data => {
+    data.forEach(todo => {
       if (todo.completed) {
         todos.completed++
       } else {

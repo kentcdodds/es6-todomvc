@@ -9,14 +9,12 @@ var htmlEscapes = {
   '`': '&#x60;'
 }
 
-var escapeHtmlChar = function(chr) {
-  return htmlEscapes[chr]
-}
+var escapeHtmlChar = chr => htmlEscapes[chr]
 
 var reUnescapedHtml = /[&<>"'`]/g
 var reHasUnescapedHtml = new RegExp(reUnescapedHtml.source)
 
-var escape = function(string) {
+var escape = string => {
   if (string && reHasUnescapedHtml.test(string)) {
     return string.replace(reUnescapedHtml, escapeHtmlChar)
   } else {
@@ -59,7 +57,8 @@ function Template() {
  * });
  */
 Template.prototype.show = function(data) {
-  var i, l
+  var i;
+  var l;
   var view = ''
 
   for (i = 0, l = data.length; i < l; i++) {
@@ -89,7 +88,7 @@ Template.prototype.show = function(data) {
  * @param {number} activeTodos The number of active todos.
  * @returns {string} String containing the count
  */
-Template.prototype.itemCounter = function(activeTodos) {
+Template.prototype.itemCounter = activeTodos => {
   var plural = activeTodos === 1 ? '' : 's'
 
   return '<strong>' + activeTodos + '</strong> item' + plural + ' left'
@@ -101,7 +100,7 @@ Template.prototype.itemCounter = function(activeTodos) {
  * @param  {[type]} completedTodos The number of completed todos.
  * @returns {string} String containing the count
  */
-Template.prototype.clearCompletedButton = function(completedTodos) {
+Template.prototype.clearCompletedButton = completedTodos => {
   if (completedTodos > 0) {
     return 'Clear completed'
   } else {
