@@ -1,6 +1,6 @@
 # Donald's Windows 10 Setup Instructions
 
-> 1. clone this repository
+> 1. Fork and clone this repository
 
 > 2. Follow the instructions on this page to clone all branches at once: https://stackoverflow.com/questions/40310932/git-hub-clone-all-branches-at-once
 
