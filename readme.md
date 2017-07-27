@@ -16,7 +16,7 @@
 * run `git checkout FEM/00-original-project --force`
 * Make sure http-server is installed globally: `npm i -g http-server`
 * run `http-server --silent -c-1 -p 3084` (or whatever port number you want to use). If the port number you are trying to use is already in use, it will give you a nasty error that says something like: Error: listen EADDRINUSE 0.0.0.0:8081
-
+* Open `http://localhost:3084/` or change the URL to indicate the port number you wish to use
 
 
 # Webpack Workshop
