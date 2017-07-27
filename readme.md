@@ -2,8 +2,7 @@
 
 > 1. clone this repository
 
-> 2. Follow the instructions on this page to clone all branches at once:
-** https://stackoverflow.com/questions/40310932/git-hub-clone-all-branches-at-once **
+> 2. Follow the instructions on this page to clone all branches at once: https://stackoverflow.com/questions/40310932/git-hub-clone-all-branches-at-once
 
 > 3. In Git Bash: Run `npm run setup:fem`
 
