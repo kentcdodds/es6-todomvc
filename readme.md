@@ -1,3 +1,21 @@
+# Donald's Windows 10 Setup Instructions
+
+> 1. clone this repository
+
+> 2. Follow the instructions on this page to clone all branches at once:
+* https://stackoverflow.com/questions/40310932/git-hub-clone-all-branches-at-once
+
+> 3. In Git Bash: Run `npm run setup:fem`
+
+> 4. After that fails:
+
+* run `git stash`
+* run `git checkout FEM/00-original-project --force`
+* Make sure http-server is installed globally: `npm i -g http-server`
+* run `http-server --silent -c-1 -p ` + Whatever port number you want to use (ie. try 3084). If the port number you are trying to use is already in use, it will give you a nasty error that says something like: Error: listen EADDRINUSE 0.0.0.0:8081
+
+
+
 # Webpack Workshop
 
 > Using the Vanilla JavaScript TodoMVC Example
