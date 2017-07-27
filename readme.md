@@ -1,4 +1,4 @@
-*# Donald's Windows 10 Setup Instructions
+# Donald's Windows 10 Setup Instructions
 
 > 1. clone this repository
 
