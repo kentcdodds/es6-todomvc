@@ -2,11 +2,15 @@
 
 > 1. Fork and clone this repository
 
-> 2. Download Git Bash and follow the instructions on this page to clone all branches at once in Git Bash: https://stackoverflow.com/questions/40310932/git-hub-clone-all-branches-at-once
+> 2. Download Git Bash 
 
-> 3. In Git Bash: Run `npm run setup:fem`
+> 3. Follow the instructions on this page to clone all branches at once in Git Bash: https://stackoverflow.com/questions/40310932/git-hub-clone-all-branches-at-once
 
-> 4. After that fails:
+> 4. In Git Bash: run `cd es6-todomvc` 
+
+> 5. Run `npm run setup:fem` (this will fail, but there is a workaround)
+
+> 6. After that fails:
 
 * In **Git Bash** run `git stash`
 * run `git checkout FEM/00-original-project --force`
