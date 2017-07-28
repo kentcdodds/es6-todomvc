@@ -87,6 +87,24 @@ with branches for each section of the workshop. So feel free to file pull reques
 but if I decide to implement a change in the workshop code, I'll probably just have to manually make the updates.
 Thanks!
 
+## Windows 10 Setup Instructions
+
+1. Fork and clone this repository
+2. Download Git Bash 
+3. Follow the instructions on this page to clone all branches at once in Git Bash: https://stackoverflow.com/questions/40310932/git-hub-clone-all-branches-at-once
+4. In Git Bash: run `cd es6-todomvc` 
+5. Run `npm run setup:fem` (this will fail, but there is a workaround)
+6. After that fails:
+
+* In **Git Bash** run `git stash`
+* run `git checkout FEM/00-original-project --force`
+* Make sure http-server is installed globally: `npm i -g http-server`
+* run `http-server --silent -c-1 -p 3084` (or whatever port number you want to use). If the port number you are trying to use is already in use, it will give you a nasty error that says something like: Error: listen EADDRINUSE 0.0.0.0:8081
+* Open `http://localhost:3084/` or change the URL to indicate the port number you wish to use
+* In your package.json file, add `-p 3084` to the end of your "start" script 
+* Add `open http://localhost:3084/ && ` to the beginning of your start script (make sure there is a space between `&&` and `http-server`
+* now you can just run `npm start` and the app should load up at `http://localhost:3084`
+
 ## LICENSE
 
 MIT
