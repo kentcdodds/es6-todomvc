@@ -17,6 +17,9 @@
 * Make sure http-server is installed globally: `npm i -g http-server`
 * run `http-server --silent -c-1 -p 3084` (or whatever port number you want to use). If the port number you are trying to use is already in use, it will give you a nasty error that says something like: Error: listen EADDRINUSE 0.0.0.0:8081
 * Open `http://localhost:3084/` or change the URL to indicate the port number you wish to use
+* In your package.json file, add `-p 3084` to the end of your "start" script 
+* Add `open http://localhost:3084/ && ` to the beginning of your start script (make sure there is a space between `&&` and `http-server`
+* now you can just run `npm start` and the app should load up at `http://localhost:3084`
 
 
 # Webpack Workshop
