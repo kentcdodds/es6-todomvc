@@ -7,6 +7,8 @@
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
 
+<a href="https://app.codesponsor.io/link/PKGFLnhDiFvsUA5P4kAXfiPs/kentcdodds/es6-todomvc" rel="nofollow"><img src="https://app.codesponsor.io/embed/PKGFLnhDiFvsUA5P4kAXfiPs/kentcdodds/es6-todomvc.svg" style="width: 888px; height: 68px;" alt="Sponsor" /></a>
+
 ## Purpose
 
 This was originally part of [an ES6 training](http://kcd.im/es6-intro-slides) by [Kent C. Dodds](https://twitter.com/kentcdodds)
