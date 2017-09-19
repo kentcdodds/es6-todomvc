@@ -3,3 +3,4 @@ coverage/
 dist
 .opt-in
 scripts/deploy
+package-log.json
